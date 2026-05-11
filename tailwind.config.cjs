@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         primary: "rgb(var(--color-primary) / <alpha-value>)", 
         secondary: "rgb(var(--color-secondary) / <alpha-value>)", 
+        navy: "rgb(var(--color-navy) / <alpha-value>)",
         "background-light": "rgb(var(--color-background-light) / <alpha-value>)", 
         "background-dark": "rgb(var(--color-background-dark) / <alpha-value>)", 
         "accent-tan": "rgb(var(--color-accent-tan) / <alpha-value>)",
@@ -13,8 +14,9 @@ module.exports = {
         "accent-red": "rgb(var(--color-accent-red) / <alpha-value>)",
       },
       fontFamily: {
-        display: ["Playfair Display", "serif"],
-        sans: ["Inter", "sans-serif"],
+        display: ["Plus Jakarta Sans", "sans-serif"],
+        serif: ["Plus Jakarta Sans", "sans-serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
       },
       borderRadius: {
         DEFAULT: "0.5rem",

@@ -1,0 +1,341 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { useTranslations } from "../../utils/i18n";
+
+const { project, prevProject, nextProject } = Astro.props;
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
+---
+
+<Layout title={`${project.title} | PT Swastika Suraga Dharma`}>
+  <Navbar />
+
+  <main class="bg-white">
+    <!-- Premium Header with Glassmorphism -->
+    <div
+      class="sticky top-[73px] z-40 w-full glass-card border-b border-zinc-100/50"
+    >
+      <div
+        class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a
+          href={`${langPrefix}/#project-showcase`}
+          class="group flex items-center gap-3 text-secondary hover:text-primary transition-all duration-500 font-semibold"
+        >
+          <div
+            class="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all"
+          >
+            <span class="material-icons-outlined text-sm">arrow_back</span>
+          </div>
+          <span class="text-xs tracking-[0.2em] font-bold uppercase">{t('projects.portfolio')}</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-6">
+          <div class="h-4 w-px bg-zinc-200"></div>
+          <h2
+            class="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase truncate max-w-[200px]"
+          >
+            {project.title}
+          </h2>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a
+            href={`${langPrefix}/projects/${prevProject.slug}`}
+            class="w-10 h-10 flex items-center justify-center rounded-sm bg-zinc-50 hover:bg-zinc-100 transition-colors text-secondary"
+            title="Previous Project"
+          >
+            <span class="material-icons-outlined">chevron_left</span>
+          </a>
+          <a
+            href={`${langPrefix}/projects/${nextProject.slug}`}
+            class="w-10 h-10 flex items-center justify-center rounded-sm bg-zinc-50 hover:bg-zinc-100 transition-colors text-secondary"
+            title="Next Project"
+          >
+            <span class="material-icons-outlined">chevron_right</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-screen-2xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:min-h-screen">
+        <!-- Left Column: Image Gallery (Stick Center) -->
+        <div
+          class="lg:col-span-8 bg-zinc-50 lg:border-r border-zinc-100 flex flex-col items-center justify-center p-6 lg:p-12"
+        >
+          <div class="relative w-full max-w-5xl group">
+            <div
+              class="embla overflow-hidden rounded-lg shadow-2xl"
+              id="project-carousel"
+            >
+              <div class="embla__container flex">
+                {
+                  project.allImages.map((imgSrc: string, index: number) => (
+                    <div class="embla__slide flex-[0_0_100%] min-w-0 relative aspect-[16/10]">
+                      <img
+                        src={imgSrc}
+                        alt={`${project.title} showcase`}
+                        class="w-full h-full object-cover transition-transform duration-1000"
+                        loading={index === 0 ? "eager" : "lazy"}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- Custom Navigation Buttons inside Gallery -->
+            <button
+              class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-lg rounded-full flex items-center justify-center text-secondary opacity-0 group-hover:opacity-100 transition-all z-10"
+            >
+              <span class="material-icons-outlined">chevron_left</span>
+            </button>
+            <button
+              class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur shadow-lg rounded-full flex items-center justify-center text-secondary opacity-0 group-hover:opacity-100 transition-all z-10"
+            >
+              <span class="material-icons-outlined">chevron_right</span>
+            </button>
+          </div>
+
+          <!-- Vertical/Horizontal Thumbnails -->
+          <div
+            class="mt-8 w-full max-w-5xl flex gap-3 overflow-x-auto pb-4 scrollbar-hide"
+          >
+            {
+              project.allImages.length > 1 &&
+                project.allImages.map((imgSrc: string, index: number) => (
+                  <button
+                    class="thumb-item flex-shrink-0 w-24 aspect-[4/3] rounded-md overflow-hidden border-2 border-transparent transition-all opacity-60 hover:opacity-100"
+                    data-index={index}
+                  >
+                    <img
+                      src={imgSrc}
+                      class="w-full h-full object-cover"
+                      alt={`Thumb ${index + 1}`}
+                    />
+                  </button>
+                ))
+            }
+          </div>
+        </div>
+
+        <!-- Right Column: Project Info -->
+        <div
+          class="lg:col-span-4 p-8 lg:p-16 lg:sticky lg:top-[150px] lg:h-[calc(100vh-150px)] overflow-y-auto custom-scrollbar flex flex-col"
+        >
+          <div class="flex-grow">
+            <span
+              class="inline-block px-3 py-1 bg-primary/5 text-primary font-bold text-[10px] tracking-[0.3em] uppercase rounded-sm mb-6"
+            >
+              {project.category[lang as keyof typeof project.category] || project.category.en}
+            </span>
+
+            <h1
+              class="font-display text-4xl lg:text-5xl font-bold text-[#132045] mb-8 leading-[1.1] tracking-tight uppercase"
+            >
+              {project.title}
+            </h1>
+
+            <div class="prose prose-slate max-w-none mb-12">
+              <p
+                class="text-slate-500 leading-relaxed text-lg font-light whitespace-pre-line italic"
+              >
+                {project.description[lang as keyof typeof project.description] || project.description.en}
+              </p>
+            </div>
+
+            <!-- Project Specs Grid -->
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-y-8 gap-x-12 pt-8 border-t border-zinc-100"
+            >
+              {
+                project.details && (
+                  <>
+                    <div class="space-y-1">
+                      <p class="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">
+                        {lang === 'id' ? 'Klien' : 'Client'}
+                      </p>
+                      <p class="text-[#132045] font-semibold text-lg">
+                        {project.details.client || "Confidential"}
+                      </p>
+                    </div>
+                    <div class="space-y-1">
+                      <p class="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">
+                        {lang === 'id' ? 'Tahun' : 'Year'}
+                      </p>
+                      <p class="text-[#132045] font-semibold text-lg">
+                        {project.details.year || "2024"}
+                      </p>
+                    </div>
+                    <div class="space-y-1">
+                      <p class="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">
+                        {lang === 'id' ? 'Kategori' : 'Category'}
+                      </p>
+                      <p class="text-[#132045] font-semibold text-lg">
+                        {project.category[lang as keyof typeof project.category] || project.category.en}
+                      </p>
+                    </div>
+                    <div class="space-y-1">
+                      <p class="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">
+                        {lang === 'id' ? 'Layanan' : 'Services'}
+                      </p>
+                      <p class="text-[#132045] font-semibold text-lg">
+                        {typeof project.details.service === 'object' 
+                          ? (project.details.service[lang as keyof typeof project.details.service] || project.details.service.en)
+                          : project.details.service || "-"}
+                      </p>
+                    </div>
+                  </>
+                )
+              }
+            </div>
+          </div>
+
+          <!-- Bottom CTA -->
+          <div class="mt-16 pt-8 border-t border-zinc-100">
+            <a
+              href="https://wa.me/6281127005688"
+              target="_blank"
+              class="group flex items-center justify-between bg-[#132045] text-white p-5 rounded-sm hover:bg-primary transition-all duration-500"
+            >
+              <div class="flex flex-col">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] text-white/60 mb-1"
+                  >{lang === 'id' ? 'TERTARIK?' : 'INTERESTED?'}</span
+                >
+                <span class="font-bold text-sm tracking-widest uppercase"
+                  >{lang === 'id' ? 'Mulai Proyek Anda' : 'Start Your Project'}</span
+                >
+              </div>
+              <span
+                class="material-icons-outlined group-hover:translate-x-2 transition-transform"
+                >arrow_forward</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next Project Teaser -->
+    <section class="border-t border-zinc-100 relative overflow-hidden group">
+      <a href={`${langPrefix}/projects/${nextProject.slug}`} class="block py-24 lg:py-40">
+        <div class="absolute inset-0 z-0">
+          <img
+            src={nextProject.image}
+            alt="Next project preview"
+            class="w-full h-full object-cover grayscale opacity-10 group-hover:grayscale-0 group-hover:opacity-20 group-hover:scale-105 transition-all duration-1000"
+          />
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+          <span
+            class="text-primary font-bold tracking-[0.4em] text-xs uppercase mb-4 block"
+            >{lang === 'id' ? 'NARASI SELANJUTNYA' : 'Next Narrative'}</span
+          >
+          <h2
+            class="font-display text-5xl lg:text-7xl font-bold text-[#132045] mb-8 transition-transform duration-700 group-hover:-translate-y-2"
+          >
+            {nextProject.title}
+          </h2>
+          <div
+            class="inline-flex items-center gap-4 text-[#132045] font-bold tracking-widest text-sm border-b-2 border-primary/20 pb-2 group-hover:border-primary transition-colors"
+          >
+            {lang === 'id' ? 'JELAJAHI PROYEK' : 'EXPLORE PROJECT'}
+            <span class="material-icons-outlined">arrow_forward</span>
+          </div>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+</style>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+  import {
+    getWatermarkedDataUrl,
+    preloadWatermark,
+  } from "../../utils/watermark.js";
+
+  // Carousel Setup
+  const setupGallery = () => {
+    const emblaNode = document.querySelector(
+      "#project-carousel",
+    ) as HTMLElement;
+    const prevBtn = document.querySelector(".carousel-prev") as HTMLElement;
+    const nextBtn = document.querySelector(".carousel-next") as HTMLElement;
+    const thumbs = document.querySelectorAll(".thumb-item");
+
+    if (!emblaNode) return;
+
+    const emblaApi = EmblaCarousel(emblaNode, { loop: true, align: "start" });
+
+    if (prevBtn) prevBtn.addEventListener("click", () => emblaApi.scrollPrev());
+    if (nextBtn) nextBtn.addEventListener("click", () => emblaApi.scrollNext());
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener("click", () => emblaApi.scrollTo(i));
+    });
+
+    const updateThumbs = () => {
+      const selected = emblaApi.selectedScrollSnap();
+      thumbs.forEach((thumb, i) => {
+        if (i === selected) {
+          thumb.classList.add("border-primary", "opacity-100");
+          thumb.classList.remove("opacity-60", "border-transparent");
+          thumb.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+        } else {
+          thumb.classList.remove("border-primary", "opacity-100");
+          thumb.classList.add("opacity-60", "border-transparent");
+        }
+      });
+    };
+
+    emblaApi.on("select", updateThumbs);
+    emblaApi.on("init", updateThumbs);
+    updateThumbs();
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setupGallery();
+  });
+
+  document.addEventListener("astro:page-load", () => {
+    setupGallery();
+  });
+</script>

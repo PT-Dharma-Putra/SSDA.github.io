@@ -1,107 +1,421 @@
-<section id="about" class="py-24 bg-slate-50 overflow-hidden relative">
-  <!-- Decorative Elements -->
-  <div
-    class="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"
-  >
-  </div>
-  <div
-    class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"
-  >
-  </div>
+---
+import { useTranslations } from "../utils/i18n";
 
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <div class="flex flex-col">
-        <div
-          class="inline-block self-start mb-6 px-4 py-1 rounded-full bg-primary/10 text-primary text-[0.7rem] font-bold uppercase tracking-[0.2em]"
-        >
-          Our Heritage
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+---
+
+<section id="about" class="about-section">
+  <div class="about-container">
+    
+    <!-- Left Side: Visual Experience -->
+    <div class="about-visual">
+      <div class="about-image-wrapper">
+        <img 
+          src="/images/about-premium.png" 
+          alt="Premium Interior Design" 
+          class="about-main-img"
+          id="about-img"
+        />
+        <div class="about-img-overlay"></div>
+      </div>
+      
+      <!-- Floating Stats Cards -->
+      <div class="about-stats">
+        <!-- Card 1 -->
+        <div class="stat-card" data-aos="fade-right">
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value">30+</span>
+            <span class="stat-label">{t('about.clients')}</span>
+          </div>
         </div>
-
-        <h2
-          class="font-display text-4xl md:text-5xl lg:text-6xl font-light text-secondary mb-10 leading-[1.15]"
-        >
-          Discovering <br />
-          <span class="text-primary italic font-medium"
-            >Abhijati Sahar Dharma</span
-          >
-        </h2>
-
-        <div
-          class="space-y-8 text-slate-500 leading-relaxed text-lg font-light"
-        >
-          <span class="text-secondary font-semibold">Abhijati Sahar Dharma</span
-          > is a <span class="text-secondary font-semibold"
-            >4.0 Interior Design and Furniture Manufacturing</span
-          > company based in <span class="text-secondary font-semibold"
-            >Jakarta</span
-          >, with our head office located at <span
-            class="text-secondary font-semibold">Hermina Tower, Kemayoran</span
-          >, and a fully equipped production facility in <span
-            class="text-secondary font-semibold">Tangerang</span
-          >.
+        
+        <!-- Card 2 -->
+        <div class="stat-card" data-aos="fade-right" data-aos-delay="100">
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value">5+</span>
+            <span class="stat-label" set:html={t('about.experience')} />
+          </div>
         </div>
-        <p>
-          Specializing in <span class="text-secondary font-semibold"
-            >high-quality, long-lasting furniture</span
-          >, we are committed to <span class="text-secondary font-semibold"
-            >precision, durability, and timeless design</span
-          >. Our strength lies in our ability to deliver on <span
-            class="text-secondary font-semibold"
-            >large-scale interior and furnishing projects</span
-          >, backed by years of experience collaborating with a diverse range of
-          clients.
+        
+        <!-- Card 3 -->
+        <div class="stat-card" data-aos="fade-right" data-aos-delay="200">
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value">5+</span>
+            <span class="stat-label" set:html={t('about.cities')} />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Content -->
+    <div class="about-content" data-aos="fade-left">
+      <div class="about-header">
+        <span class="about-eyebrow">{t('about.established')}</span>
+        <h2 class="about-title">{t('about.title')}</h2>
+        <div class="about-title-line"></div>
+      </div>
+      
+      <h3 class="about-subtitle">
+        {t('about.subtitle')}
+      </h3>
+
+      <div class="about-text">
+        <p class="about-p highlight">
+          {t('about.p1')}
         </p>
-        <p>
-          We've proudly completed projects for <span
-            class="text-secondary font-semibold"
-            >schools, hospitals, hotels, and other commercial spaces</span
-          >—tailoring every piece to meet the unique demands of each
-          environment. With a combination of skilled craftsmanship, modern
-          manufacturing, and design expertise, we bring ideas to life at <span
-            class="text-secondary font-semibold"
-            >scale and with lasting impact</span
-          >.
+        <p class="about-p">
+          {t('about.p2')}
         </p>
+        <div class="about-quote">
+          <div class="quote-line"></div>
+          <p class="about-p italic">
+            {t('about.p3')}
+          </p>
+        </div>
       </div>
 
-      <div
-        class="relative group max-w-[320px] md:max-w-[480px] lg:max-w-none mx-auto lg:mx-0"
-      >
-        <div
-          class="absolute -inset-4 bg-primary/10 rounded-2xl blur-2xl group-hover:bg-primary/20 transition-all duration-700"
-        >
-        </div>
-        <div
-          class="relative z-10 bg-slate-100 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
-        >
-          <img
-            src="/images/project/Residential/2.png"
-            alt="Residential Project by Abhijati Sahar Dharma"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-          >
-          </div>
-        </div>
-
-        <!-- Experience Badge -->
-        <div
-          class="absolute -bottom-4 -right-4 md:-bottom-8 md:-right-8 bg-white/90 backdrop-blur-md p-4 md:p-8 shadow-2xl rounded-2xl z-20 max-w-[140px] md:max-w-[200px] border border-primary/20 transform hover:-translate-y-2 transition-transform duration-300"
-        >
-          <div class="flex flex-col">
-            <span
-              class="text-gradient-accent text-3xl md:text-5xl font-display font-bold mb-1"
-              >10+</span
-            >
-            <span
-              class="text-[0.6rem] font-bold text-slate-400 uppercase tracking-[0.2em] leading-tight"
-              >Years of Masterful Craftsmanship</span
-            >
-          </div>
+      <div class="about-badge">
+        <img src="/images/SSD2.png" alt="PT SSD" class="badge-logo" />
+        <div class="badge-text">
+          <span class="badge-title">PT Swastika</span>
+          <span class="badge-sub">Suraga Dharma</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .about-section {
+    background-color: #ffffff;
+    padding: 120px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* ─── Visual Side ─── */
+  .about-visual {
+    position: relative;
+    height: 700px;
+  }
+
+  .about-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -12px rgba(19, 32, 69, 0.25);
+  }
+
+  .about-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-visual:hover .about-main-img {
+    transform: scale(1.05);
+  }
+
+  .about-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(19, 32, 69, 0.4), transparent);
+  }
+
+  /* ─── Stats Cards (Glassmorphism) ─── */
+  .about-stats {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 280px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stat-card:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 50px rgba(19, 32, 69, 0.15);
+  }
+
+  .stat-icon {
+    width: 52px;
+    height: 52px;
+    background: #132045;
+    color: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .stat-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-family: 'Plus Jakarta Sans', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #132045;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #71717a;
+  }
+
+  /* ─── Content Side ─── */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .about-eyebrow {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #e4222e;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+  }
+
+  .about-title {
+    font-family: 'Plus Jakarta Sans', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #132045;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .about-title-line {
+    width: 80px;
+    height: 4px;
+    background: #e4222e;
+    margin-top: 16px;
+  }
+
+  .about-subtitle {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #132045;
+    letter-spacing: -0.01em;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #52525b;
+  }
+
+  .about-p.highlight {
+    color: #132045;
+    font-weight: 500;
+  }
+
+  .about-quote {
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .quote-line {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    background: #132045;
+    border-radius: 2px;
+    opacity: 0.2;
+  }
+
+  .about-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 20px;
+    width: fit-content;
+  }
+
+  .badge-logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .badge-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .badge-title {
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #132045;
+  }
+
+  .badge-sub {
+    font-size: 0.7rem;
+    color: #e4222e;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 100px;
+    }
+
+    .about-visual {
+      height: 500px;
+      order: 2;
+    }
+
+    .about-content {
+      order: 1;
+    }
+
+    .about-stats {
+      right: 0;
+      left: 0;
+      top: unset;
+      bottom: -60px;
+      transform: none;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      min-width: unset;
+      flex: 1 1 240px;
+    }
+    
+    .about-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-section {
+      padding: 80px 20px;
+    }
+
+    .about-title {
+      font-size: 2.75rem;
+    }
+
+    .about-visual {
+      height: 400px;
+    }
+
+    .stat-card {
+      padding: 16px 20px;
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<script>
+  function initAboutAnimations() {
+    const observerOptions = {
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const elements = document.querySelectorAll('.stat-card, .about-content, .about-image-wrapper');
+    elements.forEach(el => observer.observe(el));
+  }
+
+  // Animation CSS logic
+  const style = document.createElement('style');
+  style.textContent = `
+    .stat-card, .about-content, .about-image-wrapper {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .stat-card:nth-child(1) { transition-delay: 0.1s; }
+    .stat-card:nth-child(2) { transition-delay: 0.2s; }
+    .stat-card:nth-child(3) { transition-delay: 0.3s; }
+  `;
+  document.head.appendChild(style);
+
+  document.addEventListener('DOMContentLoaded', initAboutAnimations);
+  document.addEventListener('astro:page-load', initAboutAnimations);
+</script>

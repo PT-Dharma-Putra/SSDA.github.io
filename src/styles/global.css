@@ -9,23 +9,26 @@
     --color-primary-dark: 153 27 27; /* #991B1B */
     --color-primary-light: 248 113 113; /* #F87171 */
 
-    /* Secondary Color (Deep Slate Blue for clarity) */
-    --color-secondary: 15 23 42; /* #0F172A */
+    /* Secondary / Brand Navy — main dark color */
+    --color-secondary: 19 32 69;   /* #132045 */
+    --color-navy:      19 32 69;   /* #132045 — alias */
 
-    /* Background Light (Clean White/Off-White) */
-    --color-background-light: 255 255 255; /* #FFFFFF */
+    /* Background Light */
+    --color-background-light: 245 240 236; /* #F5F0EC — warm off-white */
 
     /* Background Dark */
-    --color-background-dark: 2 6 23; /* Darker navy #020617 */
+    --color-background-dark: 19 32 69; /* #132045 */
 
     /* Accent Colors */
-    --color-accent-orange: 249 115 22; /* #F97316 - Vibrant Orange */
-    --color-accent-tan: 248 250 252; /* Light gray for subtle accents */
-    --color-accent-gray: 100 116 139; /* #64748B */
-    --color-accent-red: 228 34 46; /* #E4222E */
+    --color-accent-orange: 249 115 22;  /* #F97316 */
+    --color-accent-tan:    248 250 252; /* light gray */
+    --color-accent-gray:   100 116 139; /* #64748B */
+    --color-accent-red:    228 34 46;   /* #E4222E */
   }
 
   body {
+    background-color: #f5f0ec;
+    color: #132045;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -87,5 +90,16 @@
 
   .hover-lift:hover {
     transform: translateY(-5px);
+  }
+
+  /* Section visual rhythm */
+  .section-divider {
+    border-top: 1px solid rgba(19, 32, 69, 0.08);
+  }
+  .section-alt {
+    background-color: #ffffff;
+  }
+  .section-shadow-top {
+    box-shadow: inset 0 6px 18px -8px rgba(19, 32, 69, 0.08);
   }
 }

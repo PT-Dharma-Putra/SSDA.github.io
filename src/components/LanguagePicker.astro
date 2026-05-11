@@ -1,0 +1,47 @@
+---
+import { languages } from '../utils/i18n';
+
+const { lang } = Astro.props;
+
+// Determine the toggle target
+const toggleLang = lang === 'id' ? 'en' : 'id';
+const toggleLabel = lang === 'id' ? 'EN' : 'ID';
+
+// Build the target URL
+const currentPath = Astro.url.pathname;
+let targetPath = '/';
+
+if (lang === 'en') {
+  // Switch to ID: if at root, go to /id, else prepend /id
+  targetPath = currentPath === '/' ? '/id' : `/id${currentPath}`;
+} else {
+  // Switch to EN: remove /id from the beginning
+  targetPath = currentPath.replace(/^\/id/, '') || '/';
+}
+---
+
+<div class="flex items-center gap-2">
+  <a
+    href={targetPath}
+    class="flex items-center justify-center w-10 h-10 rounded-full border border-primary/20 text-white hover:bg-primary hover:border-primary transition-all duration-300 text-xs font-bold tracking-widest bg-white/10 backdrop-blur-md shadow-lg group overflow-hidden relative"
+    aria-label={`Switch to ${languages[toggleLang]}`}
+  >
+    <span class="relative z-10 group-hover:scale-110 transition-transform duration-300">
+      {toggleLabel}
+    </span>
+    <div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"></div>
+  </a>
+</div>
+
+<style>
+  /* Optional: Pulse effect for the language picker if it's new */
+  a {
+    animation: subtle-pulse 3s infinite;
+  }
+  
+  @keyframes subtle-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(228, 34, 46, 0.2); }
+    70% { box-shadow: 0 0 0 10px rgba(228, 34, 46, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(228, 34, 46, 0); }
+  }
+</style>

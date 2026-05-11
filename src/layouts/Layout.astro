@@ -1,21 +1,24 @@
 ---
 import "../styles/global.css";
+const { title } = Astro.props;
+const lang = Astro.currentLocale || 'en';
+const defaultTitle = lang === 'id' ? 'PT Swastika Suraga Dharma | Solusi Interior & Furnitur Terukur' : 'PT Swastika Suraga Dharma | Scalable Interior & Furniture Solutions';
 ---
 
 <!doctype html>
-<html class="scroll-smooth overflow-x-hidden" lang="en">
+<html class="scroll-smooth overflow-x-hidden" lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/logoASD.png" />
+    <link rel="icon" type="image/svg+xml" href="/images/SSD2.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>
-      Abhijati Sahar Dharma | Scalable Interior & Furniture Solutions
+      {title || defaultTitle}
     </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
       rel="stylesheet"
     />
     <!-- Material Icons - Outlined variant -->
@@ -28,5 +31,52 @@ import "../styles/global.css";
     class="bg-background-light text-slate-800 font-sans selection:bg-primary/30 overflow-x-hidden"
   >
     <slot />
+
+    <script>
+      import { initGlobalWatermark } from "../utils/watermark.js";
+      
+      // 1. Watermark & Security Initialization
+      function initAll() {
+        initGlobalWatermark();
+
+        // Security Deterrents (Anti-Inspect & Anti-Save)
+        // Matikan Klik Kanan secara global (kecuali pada gambar agar watermark tetap muncul)
+        document.addEventListener('contextmenu', (e) => {
+          if ((e.target as HTMLElement).tagName !== 'IMG') {
+            e.preventDefault();
+          }
+        });
+
+        // Matikan Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S)
+        document.addEventListener('keydown', (e) => {
+          // F12
+          if (e.key === 'F12') {
+            e.preventDefault();
+          }
+          // Ctrl + Shift + I / J / C
+          if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+            e.preventDefault();
+          }
+          // Ctrl + U (View Source)
+          if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+            e.preventDefault();
+          }
+          // Ctrl + S (Save Page)
+          if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+            e.preventDefault();
+            alert('Saving this page is disabled to protect our assets.');
+          }
+        });
+
+        console.log("%cSTOP!", "color: red; font-family: sans-serif; font-size: 3rem; font-weight: bold;");
+        console.log("%cUnauthorized access to source code is prohibited.", "font-size: 1.2rem;");
+      }
+
+      // Run on initial load
+      initAll();
+      
+      // Run on view transitions
+      document.addEventListener("astro:page-load", initAll);
+    </script>
   </body>
 </html>

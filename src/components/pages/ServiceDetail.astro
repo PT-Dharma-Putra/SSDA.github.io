@@ -1,0 +1,307 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import ContactCTA from "../../components/ContactCTA.astro";
+import { useTranslations } from "../../utils/i18n";
+
+const { slug } = Astro.props;
+const lang = Astro.currentLocale || 'en';
+const t = useTranslations(lang as any);
+const langPrefix = lang === 'en' ? '' : `/${lang}`;
+
+const serviceConfigs: Record<string, any> = {
+  "produksi-furniture": {
+    titleKey: 'service.furniture',
+    image: "/images/project/PRODUKSI/1.png",
+    leadKey: 'service.furniture.lead',
+    p1Key: 'service.furniture.p1',
+    features: [
+      'service.furniture.f1',
+      'service.furniture.f2',
+      'service.furniture.f3',
+      'service.furniture.f4',
+      'service.furniture.f5'
+    ],
+    p2Key: 'service.furniture.p2',
+    p3Key: 'service.furniture.p3',
+    heroPos: 'center'
+  },
+  "desain-interior": {
+    titleKey: 'service.interior',
+    image: "/images/project/PRODUKSI/3.png",
+    leadKey: 'service.interior.lead',
+    p1Key: 'service.interior.p1',
+    p2Key: 'service.interior.p2',
+    p3Key: 'service.interior.p3',
+    heroPos: 'center 30%'
+  },
+  "wall-panel-decoration": {
+    titleKey: 'service.wallpanel',
+    image: "/images/project/PRODUKSI/4.png",
+    leadKey: 'service.wallpanel.lead',
+    p1Key: 'service.wallpanel.p1',
+    p2Key: 'service.wallpanel.p2',
+    features: [
+      'service.wallpanel.f1',
+      'service.wallpanel.f2',
+      'service.wallpanel.f3',
+      'service.wallpanel.f4',
+      'service.wallpanel.f5'
+    ],
+    p3Key: 'service.wallpanel.p3',
+    p4Key: 'service.wallpanel.p4',
+    heroPos: 'center 40%'
+  }
+};
+
+const config = serviceConfigs[slug];
+if (!config) {
+  return Astro.redirect(langPrefix + "/#our-service");
+}
+---
+
+<Layout title={`${t(config.titleKey)} | PT Swastika Suraga Dharma`}>
+  <Navbar />
+  <main class="service-page">
+    <!-- ══ HERO ══ -->
+    <section class="service-hero">
+      <img
+        class="service-hero-media"
+        src={config.image}
+        alt={t(config.titleKey)}
+        style={`object-position: ${config.heroPos}`}
+      />
+      <div class="service-hero-overlay"></div>
+    </section>
+
+    <!-- ══ CONTENT ══ -->
+    <section class="service-content-wrapper">
+      <div class="service-card">
+        <div class="service-card-header">
+          <span class="service-category">{t('service.category')}</span>
+          <h1 class="service-title">{t(config.titleKey)}</h1>
+        </div>
+
+        <div class="service-body">
+          <p class="service-lead">
+            {t(config.leadKey)}
+          </p>
+
+          <p>
+            {t(config.p1Key)}
+          </p>
+
+          {config.features && (
+            <ul class="service-features">
+              {config.features.map((fKey: any) => (
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>{t(fKey)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {config.p2Key && <p>{t(config.p2Key)}</p>}
+          {config.p3Key && <p>{t(config.p3Key)}</p>}
+          {config.p4Key && <p>{t(config.p4Key)}</p>}
+        </div>
+
+        <div class="service-footer">
+          <a href={`${langPrefix}/#our-service`} class="service-back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5"></path>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            {t('nav.backToServices')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <ContactCTA />
+  <Footer />
+</Layout>
+
+<style>
+  .service-page {
+    background-color: #f3eee9;
+    min-height: 100vh;
+  }
+
+  /* ─── Hero ─── */
+  .service-hero {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+    min-height: 400px;
+    background-color: #132045;
+  }
+
+  .service-hero-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+  }
+
+  .service-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(19,32,69,0.2) 0%, rgba(243,238,233,1) 100%);
+  }
+
+  /* ─── Content Overlap ─── */
+  .service-content-wrapper {
+    max-width: 900px;
+    margin: -200px auto 80px;
+    position: relative;
+    z-index: 10;
+    padding: 0 24px;
+  }
+
+  .service-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 64px;
+    box-shadow: 0 20px 40px rgba(19, 32, 69, 0.05);
+    border: 1px solid rgba(0,0,0,0.02);
+  }
+
+  .service-card-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .service-category {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #e4222e;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .service-title {
+    font-family: 'Plus Jakarta Sans', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: #132045;
+    margin: 0;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  .service-body {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .service-lead {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.2rem;
+    color: #132045;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .service-body p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 24px;
+  }
+
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 40px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .service-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.05rem;
+    color: #132045;
+    font-weight: 500;
+    background: #f9fafb;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid #f3f4f6;
+  }
+
+  .service-features li svg {
+    width: 24px;
+    height: 24px;
+    color: #e4222e;
+    flex-shrink: 0;
+  }
+
+  .service-footer {
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: center;
+  }
+
+  .service-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #132045;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: #f3f4f6;
+    transition: all 0.3s ease;
+  }
+
+  .service-back-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .service-back-btn:hover {
+    background: #132045;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(19, 32, 69, 0.15);
+  }
+
+  .service-back-btn:hover svg {
+    transform: translateX(-4px);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .service-hero {
+      height: 45vh;
+    }
+    .service-content-wrapper {
+      margin-top: -120px;
+      padding: 0 16px;
+    }
+    .service-card {
+      padding: 40px 24px;
+    }
+    .service-card-header {
+      margin-bottom: 32px;
+    }
+    .service-features li {
+      padding: 12px 16px;
+      font-size: 1rem;
+    }
+  }
+</style>

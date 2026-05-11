@@ -1,8 +1,8 @@
 ---
-import ProjectDetail from "../../components/pages/ProjectDetail.astro";
+import ProjectDetail from "../../../components/pages/ProjectDetail.astro";
 import fs from "node:fs";
 import path from "node:path";
-import { projectsData } from "../../data/projects.js";
+import { projectsData } from "../../../data/projects.js";
 
 export async function getStaticPaths() {
   const projects = projectsData;
