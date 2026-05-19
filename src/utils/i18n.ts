@@ -96,7 +96,7 @@ export const ui = {
     'contact.desc': 'Feel free to talk, share your imagination and let us make it into reality. Our experts are ready to collaborate and craft your perfect environment.',
     'contact.trusted': 'Trusted by 500+ Clients',
     
-    'footer.description': 'A C4.0 Interior Design and Furniture Manufacturing company specializing in high-quality, long-lasting furniture for large-scale projects.',
+    'footer.description': 'PT Swastika Suraga Dharma is an interior design and furniture manufacturing company focusing on quality, function, and aesthetics.',
     'footer.rights': 'ALL RIGHTS RESERVED.',
     'footer.nav': 'Navigation',
     'footer.hq': 'The Headquarters',
@@ -131,9 +131,9 @@ export const ui = {
     'about.experience': 'Tahun Pengalaman',
     'about.cities': 'Kota Indonesia',
     'about.established': 'Didirikan 2019',
-    'about.p1': 'PT Swastika Suraga Dharma adalah perusahaan desain interior dan furniture manufaktur yang berfokus pada kualitas, fungsi, dan estetika.',
-    'about.p2': 'Kami menggunakan material pilihan seperti multiplek berkualitas tinggi, finishing HPL, duco, serta kayu solid yang dapat disesuaikan dengan kebutuhan desain dan tren pasar.',
-    'about.p3': 'Didukung tenaga profesional dan sistem produksi terstandarisasi, kami siap menjadi mitra terpercaya untuk mewujudkan ruang yang nyaman dan bernilai tinggi.',
+    'about.p1': 'Setiap ruang yang kita tinggali merefleksikan siapa diri kita. Dan bagi para pemilik properti, interior adalah kunci untuk menciptakan kesan pertama yang tak terlupakan.',
+    'about.p2': 'PT Swastika Suraga Dharma hadir sebagai mitra terpercaya dalam mentransformasi ruang hunian, residensial, hingga bisnis kos dan guest house Anda.',
+    'about.p3': 'Kami memadukan keahlian manufaktur furnitur modern dengan pemahaman mendalam akan kebutuhan ruang yang efisien namun tetap elegan. Melalui material berkualitas tinggi dan pengerjaan yang presisi, kami memastikan setiap jengkal ruangan bernilai guna dan tahan lama.',
     
     'service.view': 'Lihat Layanan',
     
@@ -157,7 +157,7 @@ export const ui = {
     'service.interior': 'Desain Interior',
     'service.wallpanel': 'Dekorasi Panel Dinding',
     'service.category': 'Layanan Kami',
-
+ 
     // Produksi Furniture Detail
     'service.furniture.lead': 'Kami memproduksi berbagai jenis furniture untuk kebutuhan dengan mengutamakan ketahanan, fungsi, dan nilai estetika. Setiap produk dibuat melalui proses yang presisi, mulai dari pemilihan material, pengerjaan detail, hingga tahap finishing yang rapi dan tahan lama.',
     'service.furniture.p1': 'Didukung oleh tenaga ahli berpengalaman dan fasilitas produksi yang memadai, kami mampu menghadirkan furniture dengan:',
@@ -168,13 +168,13 @@ export const ui = {
     'service.furniture.f5': 'Kontrol kualitas di setiap tahap produksi',
     'service.furniture.p2': 'Kami percaya bahwa furniture bukan hanya pelengkap ruang, tetapi elemen penting yang menunjang kenyamanan, produktivitas, dan karakter sebuah ruangan. Oleh karena itu, setiap produk yang kami hasilkan selalu mengedepankan fungsi, keamanan, dan keindahan secara seimbang.',
     'service.furniture.p3': 'Dengan komitmen terhadap kualitas dan ketepatan waktu, PT Swastika Suraga Dharma siap menjadi partner terpercaya dalam memenuhi kebutuhan furniture Anda.',
-
+ 
     // Desain Interior Detail
-    'service.interior.lead': 'Kami memahami bahwa sebuah ruang bukan hanya sekadar tempat, melainkan representasi identitas, kenyamanan, dan produktivitas. Oleh karena itu, setiap desain kami rancang secara custom sesuai dengan konsep, aktivitas, dan identitas klien. Mulai dari tahap konsultasi, perencanaan konsep, hingga visualisasi desain 3D, tim kami siap membantu mewujudkan ruang impian Anda.',
+    'service.interior.lead': 'Kami memahami bahwa sebuah ruang bukan hanya sekadar tempat, melainkan representasi identitas, kenyamanan, dan produktivitas. Oleh karena itu, setiap desain kami rancang secara custom sesuai dengan konsep, aktivitas, and identitas klien. Mulai dari tahap konsultasi, perencanaan konsep, hingga visualisasi desain 3D, tim kami siap membantu mewujudkan ruang impian Anda.',
     'service.interior.p1': 'Didukung oleh tim desainer berpengalaman dan tenaga ahli di bidang manufaktur, kami menghadirkan solusi desain yang eksklusif, fungsional, dan berstandar internasional. Setiap detail diperhatikan secara seksama, mulai dari konsep ruang, pemilihan material, ergonomi, hingga aspek keamanan dan keberlanjutan.',
     'service.interior.p2': 'Dengan pengalaman mengerjakan berbagai proyek, Kami berkomitmen menghadirkan ruang yang tidak hanya indah secara visual, tetapi juga mampu meningkatkan kualitas aktivitas di dalamnya.',
     'service.interior.p3': 'Bagi kami, desain interior yang baik bukanlah sekadar tentang tampilan visual, tetapi solusi untuk menciptakan ruang yang nyaman, produktif, dan berkelas.',
-
+ 
     // Wall Panel Detail
     'service.wallpanel.lead': 'Kami menyediakan layanan dekorasi panel dinding sebagai solusi untuk mempercantik dan memperkuat karakter ruang secara elegan dan fungsional.',
     'service.wallpanel.p1': 'Kami menghadirkan berbagai konsep dekorasi panel dinding yang dirancang secara custom, menyesuaikan dengan kebutuhan, tema, dan identitas ruang. Setiap panel kami produksi dengan detail presisi dan kualitas terbaik.',
@@ -194,7 +194,7 @@ export const ui = {
     'contact.desc': 'Jangan ragu untuk berbicara, bagikan imajinasi Anda dan biarkan kami mewujudkannya. Pakar kami siap berkolaborasi dan merancang lingkungan sempurna Anda.',
     'contact.trusted': 'Dipercaya oleh 500+ Klien',
     
-    'footer.description': 'Perusahaan Desain Interior dan Manufaktur Furnitur C4.0 yang mengkhususkan diri pada furnitur berkualitas tinggi dan tahan lama untuk proyek skala besar.',
+    'footer.description': 'PT Swastika Suraga Dharma adalah perusahaan desain interior dan furniture manufaktur yang berfokus pada kualitas, fungsi, dan estetika.',
     'footer.rights': 'SELURUH HAK CIPTA DILINDUNGI.',
     'footer.nav': 'Navigasi',
     'footer.hq': 'Kantor Pusat',

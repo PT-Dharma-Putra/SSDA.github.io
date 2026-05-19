@@ -1,21 +1,28 @@
 ---
 import { useTranslations } from "../utils/i18n";
 
-const lang = Astro.currentLocale || 'en';
+const lang = Astro.currentLocale || "en";
 const t = useTranslations(lang as any);
-const langPrefix = lang === 'en' ? '' : `/${lang}`;
+const langPrefix = lang === "en" ? "" : `/${lang}`;
 ---
 
-<footer class="relative bg-navy text-white pt-12 pb-8 overflow-hidden border-t border-white/5">
+<footer
+  class="relative bg-navy text-white pt-12 pb-8 overflow-hidden border-t border-white/5"
+>
   <!-- Subtle Background Texture -->
-  <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-  
+  <div
+    class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"
+  >
+  </div>
+
   <!-- Top Decorative Line -->
-  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+  <div
+    class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+  >
+  </div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-      
       <!-- Brand Section -->
       <div class="space-y-4" data-aos-f="fade-up">
         <div class="flex items-center gap-3">
@@ -27,49 +34,67 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
             />
           </div>
           <div class="flex flex-col">
-            <span class="text-base font-serif font-bold tracking-tight leading-none">PT Swastika</span>
-            <span class="text-[9px] font-display font-bold text-primary tracking-[0.2em] uppercase">Suraga Dharma</span>
+            <span
+              class="text-base font-serif font-bold tracking-tight leading-none"
+              >PT Swastika</span
+            >
+            <span
+              class="text-[9px] font-display font-bold text-primary tracking-[0.2em] uppercase"
+              >Suraga Dharma</span
+            >
           </div>
         </div>
-        <p class="text-white/40 text-[13px] leading-relaxed font-light max-w-xs">
-          {t('footer.description')}
+        <p
+          class="text-white/40 text-[13px] leading-relaxed font-light max-w-xs"
+        >
+          {t("footer.description")}
         </p>
         <div class="flex gap-3">
-          {[
-            { icon: 'camera_alt', href: 'https://www.instagram.com/dharmaputrainterior/?hl=en' },
-            { icon: 'work', href: 'https://www.linkedin.com/company/pt-dharma-putra-sejahtera-abadi/' }
-          ].map((social) => (
-            <a
-              href={social.href}
-              target="_blank"
-              class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-primary transition-all duration-300"
-            >
-              <span class="material-icons-outlined text-lg">{social.icon}</span>
-            </a>
-          ))}
+          {
+            [
+              {
+                icon: "camera_alt",
+                href: "https://www.instagram.com/dharmaputrainterior/?hl=en",
+              },
+              {
+                icon: "work",
+                href: "https://www.linkedin.com/company/pt-dharma-putra-sejahtera-abadi/",
+              },
+            ].map((social) => (
+              <a
+                href={social.href}
+                target="_blank"
+                class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-primary transition-all duration-300"
+              >
+                <span class="material-icons-outlined text-lg">
+                  {social.icon}
+                </span>
+              </a>
+            ))
+          }
         </div>
       </div>
 
       <!-- Navigation -->
       <div class="space-y-6" data-aos-f="fade-up" data-aos-delay="100">
         <h4 class="font-serif text-lg font-semibold flex items-center gap-2">
-          {t('footer.nav')}
+          {t("footer.nav")}
           <span class="flex-1 h-px bg-white/5"></span>
         </h4>
         <ul class="grid grid-cols-2 gap-y-2 gap-x-4">
           {
             [
-              { key: 'nav.home', href: '#home' },
-              { key: 'nav.about', href: '#about' },
-              { key: 'nav.services', href: '#our-service' },
-              { key: 'nav.projects', href: '#project-showcase' }
+              { key: "nav.home", href: "#home" },
+              { key: "nav.about", href: "#about" },
+              { key: "nav.services", href: "#our-service" },
+              { key: "nav.projects", href: "#project-showcase" },
             ].map((item) => (
               <li>
                 <a
                   href={`${langPrefix}/${item.href}`}
                   class="group flex items-center gap-2 text-white/40 hover:text-white transition-all duration-200"
                 >
-                  <span class="w-1 h-1 rounded-full bg-primary/30 group-hover:bg-primary transition-colors"></span>
+                  <span class="w-1 h-1 rounded-full bg-primary/30 group-hover:bg-primary transition-colors" />
                   <span class="text-xs font-light">{t(item.key as any)}</span>
                 </a>
               </li>
@@ -79,52 +104,88 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
       </div>
 
       <!-- Contact Details -->
-      <div class="space-y-6 lg:col-span-2" data-aos-f="fade-up" data-aos-delay="200">
+      <div
+        class="space-y-6 lg:col-span-2"
+        data-aos-f="fade-up"
+        data-aos-delay="200"
+      >
         <h4 class="font-serif text-lg font-semibold flex items-center gap-2">
-          {t('footer.hq')}
+          {t("footer.hq")}
           <span class="flex-1 h-px bg-white/5"></span>
         </h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="flex items-start gap-3 group">
-            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-primary flex-shrink-0 border border-white/5">
+            <div
+              class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-primary flex-shrink-0 border border-white/5"
+            >
               <span class="material-icons-outlined text-xl">location_on</span>
             </div>
             <p class="text-xs text-white/40 leading-relaxed font-light">
-              Jl. Selokan Mataram, Sombo Merten, Demangan, Maguwoharjo, Sleman, Yogyakarta
+              Jl. Selokan Mataram, Sombo Merten, Demangan, Maguwoharjo, Sleman,
+              Yogyakarta
             </p>
           </div>
           <div class="space-y-2">
-            {[
-              { icon: 'phone', value: '+62 811-2850-7788', href: 'https://wa.me/6281128507788' },
-              { icon: 'email', value: 'marketing@dharmaputrainterior.co.id', href: 'mailto:marketing@dharmaputrainterior.co.id' }
-            ].map((contact) => (
-              <a href={contact.href} class="flex items-center gap-3 group text-white/40 hover:text-white transition-colors">
-                <div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-primary border border-white/5 group-hover:bg-primary group-hover:text-white transition-all">
-                  <span class="material-icons-outlined text-base">{contact.icon}</span>
-                </div>
-                <span class="text-xs font-medium truncate">{contact.value}</span>
-              </a>
-            ))}
+            {
+              [
+                {
+                  icon: "phone",
+                  value: "+62 811-2850-7788",
+                  href: "https://wa.me/6281128507788",
+                },
+                {
+                  icon: "email",
+                  value: "marketing@dharmaputrainterior.co.id",
+                  href: "mailto:marketing@dharmaputrainterior.co.id",
+                },
+                {
+                  icon: "email",
+                  value: "marketing@swastikasuraga.co.id",
+                  href: "mailto:marketing@swastikasuraga.co.id",
+                },
+              ].map((contact) => (
+                <a
+                  href={contact.href}
+                  class="flex items-center gap-3 group text-white/40 hover:text-white transition-colors"
+                >
+                  <div class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-primary border border-white/5 group-hover:bg-primary group-hover:text-white transition-all">
+                    <span class="material-icons-outlined text-base">
+                      {contact.icon}
+                    </span>
+                  </div>
+                  <span class="text-xs font-medium truncate">
+                    {contact.value}
+                  </span>
+                </a>
+              ))
+            }
           </div>
         </div>
       </div>
     </div>
 
     <!-- Bottom Bar -->
-    <div class="pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div
+      class="pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4"
+    >
       <p class="text-[9px] font-bold tracking-[0.2em] text-white/20 uppercase">
-        © 2026 PT SWASTIKA SURAGA DHARMA. {t('footer.rights')}
+        © 2026 PT SWASTIKA SURAGA DHARMA. {t("footer.rights")}
       </p>
       <div class="flex items-center gap-6">
-        <span class="text-[9px] font-serif italic text-white/10 tracking-[0.2em] uppercase hidden sm:block">
-          {t('footer.crafting')}
+        <span
+          class="text-[9px] font-serif italic text-white/10 tracking-[0.2em] uppercase hidden sm:block"
+        >
+          {t("footer.crafting")}
         </span>
-        <button 
+        <button
           onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
           class="w-10 h-10 rounded-xl bg-white/5 hover:bg-primary flex items-center justify-center transition-all duration-300 border border-white/5 group"
           aria-label="Back to top"
         >
-          <span class="material-icons-outlined text-xl group-hover:animate-bounce">north</span>
+          <span
+            class="material-icons-outlined text-xl group-hover:animate-bounce"
+            >north</span
+          >
         </button>
       </div>
     </div>
@@ -135,24 +196,24 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
   function initFooterAnimations() {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: "0px 0px -50px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.classList.add("animate-in");
         }
       });
     }, observerOptions);
 
-    const elements = document.querySelectorAll('[data-aos-f]');
-    elements.forEach(el => observer.observe(el));
+    const elements = document.querySelectorAll("[data-aos-f]");
+    elements.forEach((el) => observer.observe(el));
   }
 
-  if (!document.getElementById('footer-animations')) {
-    const style = document.createElement('style');
-    style.id = 'footer-animations';
+  if (!document.getElementById("footer-animations")) {
+    const style = document.createElement("style");
+    style.id = "footer-animations";
     style.textContent = `
       [data-aos-f] {
         opacity: 0;
@@ -169,13 +230,13 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
     document.head.appendChild(style);
   }
 
-  document.addEventListener('DOMContentLoaded', initFooterAnimations);
-  document.addEventListener('astro:page-load', initFooterAnimations);
+  document.addEventListener("DOMContentLoaded", initFooterAnimations);
+  document.addEventListener("astro:page-load", initFooterAnimations);
 </script>
 
 <style>
   /* Optional extra styles */
   footer {
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
   }
 </style>

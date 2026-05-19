@@ -13,7 +13,8 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
 const serviceConfigs: Record<string, any> = {
   "produksi-furniture": {
     titleKey: 'service.furniture',
-    image: "/images/project/PRODUKSI/1.png",
+    image: "/images/Foto mesin.png",
+    isVideo: false,
     leadKey: 'service.furniture.lead',
     p1Key: 'service.furniture.p1',
     features: [
@@ -30,6 +31,7 @@ const serviceConfigs: Record<string, any> = {
   "desain-interior": {
     titleKey: 'service.interior',
     image: "/images/project/PRODUKSI/3.png",
+    isVideo: false,
     leadKey: 'service.interior.lead',
     p1Key: 'service.interior.p1',
     p2Key: 'service.interior.p2',
@@ -39,6 +41,7 @@ const serviceConfigs: Record<string, any> = {
   "wall-panel-decoration": {
     titleKey: 'service.wallpanel',
     image: "/images/project/PRODUKSI/4.png",
+    isVideo: false,
     leadKey: 'service.wallpanel.lead',
     p1Key: 'service.wallpanel.p1',
     p2Key: 'service.wallpanel.p2',
@@ -66,12 +69,25 @@ if (!config) {
   <main class="service-page">
     <!-- ══ HERO ══ -->
     <section class="service-hero">
-      <img
-        class="service-hero-media"
-        src={config.image}
-        alt={t(config.titleKey)}
-        style={`object-position: ${config.heroPos}`}
-      />
+      {config.isVideo ? (
+        <video
+          class="service-hero-media"
+          autoplay
+          muted
+          loop
+          playsinline
+          style={`object-position: ${config.heroPos || 'center'}`}
+        >
+          <source src={config.image} type="video/mp4" />
+        </video>
+      ) : (
+        <img
+          class="service-hero-media"
+          src={config.image}
+          alt={t(config.titleKey)}
+          style={`object-position: ${config.heroPos || 'center'}`}
+        />
+      )}
       <div class="service-hero-overlay"></div>
     </section>
 

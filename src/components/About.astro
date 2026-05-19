@@ -1,57 +1,101 @@
 ---
 import { useTranslations } from "../utils/i18n";
 
-const lang = Astro.currentLocale || 'en';
+const lang = Astro.currentLocale || "en";
 const t = useTranslations(lang as any);
 ---
 
 <section id="about" class="about-section">
   <div class="about-container">
-    
     <!-- Left Side: Visual Experience -->
     <div class="about-visual">
       <div class="about-image-wrapper">
-        <img 
-          src="/images/about-premium.png" 
-          alt="Premium Interior Design" 
+        <img
+          src="/images/project/LUMINOR PURWOKERTO/LUMINOR 4.png"
+          alt="Premium Interior Design"
           class="about-main-img"
           id="about-img"
         />
         <div class="about-img-overlay"></div>
       </div>
-      
+
       <!-- Floating Stats Cards -->
       <div class="about-stats">
         <!-- Card 1 -->
         <div class="stat-card" data-aos="fade-right">
           <div class="stat-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-users"
+              ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+              ></path><circle cx="9" cy="7" r="4"></circle><path
+                d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path
+                d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
+            >
           </div>
           <div class="stat-info">
             <span class="stat-value">30+</span>
-            <span class="stat-label">{t('about.clients')}</span>
+            <span class="stat-label">{t("about.clients")}</span>
           </div>
         </div>
-        
+
         <!-- Card 2 -->
         <div class="stat-card" data-aos="fade-right" data-aos-delay="100">
           <div class="stat-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-award"
+              ><circle cx="12" cy="8" r="6"></circle><path
+                d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg
+            >
           </div>
           <div class="stat-info">
             <span class="stat-value">5+</span>
-            <span class="stat-label" set:html={t('about.experience')} />
+            <span class="stat-label" set:html={t("about.experience")} />
           </div>
         </div>
-        
+
         <!-- Card 3 -->
         <div class="stat-card" data-aos="fade-right" data-aos-delay="200">
           <div class="stat-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-map"
+              ><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"
+              ></polygon><line x1="9" x2="9" y1="3" y2="18"></line><line
+                x1="15"
+                x2="15"
+                y1="6"
+                y2="21"></line></svg
+            >
           </div>
           <div class="stat-info">
             <span class="stat-value">5+</span>
-            <span class="stat-label" set:html={t('about.cities')} />
+            <span class="stat-label" set:html={t("about.cities")} />
           </div>
         </div>
       </div>
@@ -60,26 +104,26 @@ const t = useTranslations(lang as any);
     <!-- Right Side: Content -->
     <div class="about-content" data-aos="fade-left">
       <div class="about-header">
-        <span class="about-eyebrow">{t('about.established')}</span>
-        <h2 class="about-title">{t('about.title')}</h2>
+        <span class="about-eyebrow">{t("about.established")}</span>
+        <h2 class="about-title">{t("about.title")}</h2>
         <div class="about-title-line"></div>
       </div>
-      
+
       <h3 class="about-subtitle">
-        {t('about.subtitle')}
+        {t("about.subtitle")}
       </h3>
 
       <div class="about-text">
         <p class="about-p highlight">
-          {t('about.p1')}
+          {t("about.p1")}
         </p>
         <p class="about-p">
-          {t('about.p2')}
+          {t("about.p2")}
         </p>
         <div class="about-quote">
           <div class="quote-line"></div>
           <p class="about-p italic">
-            {t('about.p3')}
+            {t("about.p3")}
           </p>
         </div>
       </div>
@@ -195,7 +239,7 @@ const t = useTranslations(lang as any);
   }
 
   .stat-value {
-    font-family: 'Plus Jakarta Sans', serif;
+    font-family: "Plus Jakarta Sans", serif;
     font-size: 2rem;
     font-weight: 800;
     color: #132045;
@@ -203,7 +247,7 @@ const t = useTranslations(lang as any);
   }
 
   .stat-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -220,7 +264,7 @@ const t = useTranslations(lang as any);
 
   .about-eyebrow {
     display: block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 0.75rem;
     font-weight: 800;
     color: #e4222e;
@@ -230,7 +274,7 @@ const t = useTranslations(lang as any);
   }
 
   .about-title {
-    font-family: 'Plus Jakarta Sans', serif;
+    font-family: "Plus Jakarta Sans", serif;
     font-size: 4.5rem;
     font-weight: 700;
     color: #132045;
@@ -246,7 +290,7 @@ const t = useTranslations(lang as any);
   }
 
   .about-subtitle {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     color: #132045;
@@ -260,7 +304,7 @@ const t = useTranslations(lang as any);
   }
 
   .about-p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 1.125rem;
     line-height: 1.8;
     color: #52525b;
@@ -353,7 +397,7 @@ const t = useTranslations(lang as any);
       min-width: unset;
       flex: 1 1 240px;
     }
-    
+
     .about-title {
       font-size: 3.5rem;
     }
@@ -369,12 +413,47 @@ const t = useTranslations(lang as any);
     }
 
     .about-visual {
-      height: 400px;
+      height: 380px;
+    }
+
+    .about-stats {
+      bottom: -40px;
+      gap: 10px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
     }
 
     .stat-card {
-      padding: 16px 20px;
-      flex: 1 1 100%;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 12px 10px;
+      gap: 8px;
+      border-radius: 16px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .stat-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.02em;
     }
   }
 </style>
@@ -382,24 +461,26 @@ const t = useTranslations(lang as any);
 <script>
   function initAboutAnimations() {
     const observerOptions = {
-      threshold: 0.2
+      threshold: 0.2,
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.classList.add("animate-in");
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    const elements = document.querySelectorAll('.stat-card, .about-content, .about-image-wrapper');
-    elements.forEach(el => observer.observe(el));
+    const elements = document.querySelectorAll(
+      ".stat-card, .about-content, .about-image-wrapper",
+    );
+    elements.forEach((el) => observer.observe(el));
   }
 
   // Animation CSS logic
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.textContent = `
     .stat-card, .about-content, .about-image-wrapper {
       opacity: 0;
@@ -416,6 +497,6 @@ const t = useTranslations(lang as any);
   `;
   document.head.appendChild(style);
 
-  document.addEventListener('DOMContentLoaded', initAboutAnimations);
-  document.addEventListener('astro:page-load', initAboutAnimations);
+  document.addEventListener("DOMContentLoaded", initAboutAnimations);
+  document.addEventListener("astro:page-load", initAboutAnimations);
 </script>

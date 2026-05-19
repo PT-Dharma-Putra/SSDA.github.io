@@ -1,17 +1,25 @@
 ---
-import { useTranslations } from '../utils/i18n';
-import LanguagePicker from './LanguagePicker.astro';
+import { useTranslations } from "../utils/i18n";
+import LanguagePicker from "./LanguagePicker.astro";
 
-const lang = Astro.currentLocale || 'en';
+const lang = Astro.currentLocale || "en";
 const t = useTranslations(lang as any);
 
-const langPrefix = lang === 'en' ? '' : `/${lang}`;
+const langPrefix = lang === "en" ? "" : `/${lang}`;
 
 const navItems = [
-  { href: `${langPrefix}/#home`,             text: t('nav.home'),     section: "home" },
-  { href: `${langPrefix}/#about`,            text: t('nav.about'),    section: "about" },
-  { href: `${langPrefix}/#our-service`,      text: t('nav.services'), section: "our-service" },
-  { href: `${langPrefix}/#project-showcase`, text: t('nav.projects'), section: "project-showcase" },
+  { href: `${langPrefix}/#home`, text: t("nav.home"), section: "home" },
+  { href: `${langPrefix}/#about`, text: t("nav.about"), section: "about" },
+  {
+    href: `${langPrefix}/#our-service`,
+    text: t("nav.services"),
+    section: "our-service",
+  },
+  {
+    href: `${langPrefix}/#project-showcase`,
+    text: t("nav.projects"),
+    section: "project-showcase",
+  },
 ];
 ---
 
@@ -37,9 +45,18 @@ const navItems = [
           id="nav-logo-text"
           class="ml-3 text-[0.85rem] sm:text-base md:text-lg lg:text-xl font-display font-medium tracking-tight leading-tight transition-all duration-500 ease-in-out nav-logo-large"
         >
-          <span class="logo-part-1 transition-colors duration-500 font-semibold">PT Swastika</span>
-          <span class="logo-part-2 ml-1 transition-colors duration-500 font-semibold">Suraga</span>
-          <span class="logo-part-3 italic font-semibold transition-colors duration-500">Dharma</span>
+          <span
+            class="logo-part-1 ml-1 transition-colors duration-500 font-semibold"
+            >PT Swastika</span
+          >
+          <span
+            class="logo-part-2 ml-1 transition-colors duration-500 font-semibold"
+            >Suraga</span
+          >
+          <span
+            class="logo-part-3 ml-1 italic font-semibold transition-colors duration-500"
+            >Dharma</span
+          >
         </span>
       </a>
     </div>
@@ -63,285 +80,359 @@ const navItems = [
         target="_blank"
         class="bg-primary text-white text-[0.7rem] font-bold uppercase tracking-widest px-6 py-2.5 rounded-full hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
       >
-        {t('nav.contact')}
+        {t("nav.contact")}
       </a>
-      
+
       <LanguagePicker lang={lang} />
     </div>
 
     <!-- Mobile Menu Button & Lang Picker -->
     <div class="flex items-center gap-4 md:hidden">
       <LanguagePicker lang={lang} />
-      <button id="menu-toggle" class="p-2 text-white group" id="menu-toggle-btn">
-      <div class="w-6 h-5 flex flex-col justify-between items-end">
-        <span
-          class="w-full h-0.5 bg-[#132045] rounded-full transition-all duration-300 group-hover:w-2/3 hamburger-line"
-        ></span>
-        <span
-          class="w-2/3 h-0.5 bg-[#132045] rounded-full transition-all duration-300 hamburger-line"
-        ></span>
-        <span
-          class="w-full h-0.5 bg-[#132045] rounded-full transition-all duration-300 group-hover:w-1/2 hamburger-line"
-        ></span>
-      </div>
-    </button>
-  </div>
-
-  <!-- Mobile Menu Overlay -->
-  <div
-    id="mobile-menu"
-    class="fixed inset-0 bg-background-light z-[60] transform translate-x-full invisible pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] md:hidden flex flex-col h-screen"
-  >
-    <!-- Mobile Header -->
-    <div
-      class="flex justify-between items-center px-6 py-6 border-b border-primary/10"
-    >
-      <a href="/#home" class="flex items-center">
-        <img
-          src="/images/SSD2.png"
-          alt="PT ASD Logo"
-          class="h-14 w-auto object-contain"
-        />
-      </a>
       <button
-        id="close-menu"
-        class="p-2 text-secondary hover:text-primary transition-colors"
+        id="menu-toggle"
+        class="p-2 text-white group"
+        id="menu-toggle-btn"
       >
-        <span class="material-icons-outlined text-3xl">close</span>
+        <div class="w-6 h-5 flex flex-col justify-between items-end">
+          <span
+            class="w-full h-0.5 bg-[#132045] rounded-full transition-all duration-300 group-hover:w-2/3 hamburger-line"
+          ></span>
+          <span
+            class="w-2/3 h-0.5 bg-[#132045] rounded-full transition-all duration-300 hamburger-line"
+          ></span>
+          <span
+            class="w-full h-0.5 bg-[#132045] rounded-full transition-all duration-300 group-hover:w-1/2 hamburger-line"
+          ></span>
+        </div>
       </button>
     </div>
 
-    <!-- Mobile Scrollable Content -->
+    <!-- Mobile Menu Overlay -->
     <div
-      class="flex-1 overflow-y-auto px-8 py-10 flex flex-col justify-between"
+      id="mobile-menu"
+      class="fixed inset-0 bg-background-light z-[60] transform translate-x-full invisible pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] md:hidden flex flex-col h-screen"
     >
-      <div class="space-y-6">
-        {
-          [
-            { href: `${langPrefix}/#home`,             text: t('nav.home'),     icon: "home",          section: "home" },
-            { href: `${langPrefix}/#about`,            text: t('nav.about'),    icon: "info",          section: "about" },
-            { href: `${langPrefix}/#our-service`,      text: t('nav.services'), icon: "design_services",section: "our-service" },
-            { href: `${langPrefix}/#process`,          text: t('nav.process'),  icon: "settings",      section: "process" },
-            { href: `${langPrefix}/#project-showcase`, text: t('nav.projects'), icon: "work",          section: "project-showcase" },
-          ].map((item, index) => (
-            <a
-              href={item.href}
-              data-section={item.section}
-              class="mobile-link flex items-center justify-between group translate-y-8 opacity-0 transition-all duration-700"
-              style={`transition-delay: ${index * 50}ms;`}
-            >
-              <span class="text-4xl font-display font-semibold text-secondary group-hover:text-primary transition-colors mobile-link-text">
-                {item.text}
-              </span>
-              <div class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                <span class="material-icons-outlined text-xl">{item.icon}</span>
-              </div>
-            </a>
-          ))
-        }
+      <!-- Mobile Header -->
+      <div
+        class="flex justify-between items-center px-6 py-6 border-b border-primary/10"
+      >
+        <a href="/#home" class="flex items-center">
+          <img
+            src="/images/SSD2.png"
+            alt="PT ASD Logo"
+            class="h-14 w-auto object-contain"
+          />
+        </a>
+        <button
+          id="close-menu"
+          class="p-2 text-secondary hover:text-primary transition-colors"
+        >
+          <span class="material-icons-outlined text-3xl">close</span>
+        </button>
       </div>
 
+      <!-- Mobile Scrollable Content -->
       <div
-        class="pb-10 translate-y-8 opacity-0 transition-all duration-700 delay-[500ms]"
-        id="mobile-footer"
+        class="flex-1 overflow-y-auto px-8 py-10 flex flex-col justify-between"
       >
-        <div class="w-full h-px bg-primary/10 mb-8"></div>
-        <div class="flex flex-col gap-4">
-          <p
-            class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold"
-          >
-            Reach Out To Us
-          </p>
-          <a
-            href="https://wa.me/6281128507788"
-            target="_blank"
-            class="flex items-center gap-4 text-secondary font-bold text-xl group hover:text-primary transition-colors"
-          >
-            <div
-              class="w-12 h-12 bg-primary flex items-center justify-center rounded-xl text-white group-hover:scale-110 transition-transform"
+        <div class="space-y-6">
+          {
+            [
+              {
+                href: `${langPrefix}/#home`,
+                text: t("nav.home"),
+                icon: "home",
+                section: "home",
+              },
+              {
+                href: `${langPrefix}/#about`,
+                text: t("nav.about"),
+                icon: "info",
+                section: "about",
+              },
+              {
+                href: `${langPrefix}/#our-service`,
+                text: t("nav.services"),
+                icon: "design_services",
+                section: "our-service",
+              },
+              {
+                href: `${langPrefix}/#process`,
+                text: t("nav.process"),
+                icon: "settings",
+                section: "process",
+              },
+              {
+                href: `${langPrefix}/#project-showcase`,
+                text: t("nav.projects"),
+                icon: "work",
+                section: "project-showcase",
+              },
+            ].map((item, index) => (
+              <a
+                href={item.href}
+                data-section={item.section}
+                class="mobile-link flex items-center justify-between group translate-y-8 opacity-0 transition-all duration-700"
+                style={`transition-delay: ${index * 50}ms;`}
+              >
+                <span class="text-4xl font-display font-semibold text-secondary group-hover:text-primary transition-colors mobile-link-text">
+                  {item.text}
+                </span>
+                <div class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <span class="material-icons-outlined text-xl">
+                    {item.icon}
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+
+        <div
+          class="pb-10 translate-y-8 opacity-0 transition-all duration-700 delay-[500ms]"
+          id="mobile-footer"
+        >
+          <div class="w-full h-px bg-primary/10 mb-8"></div>
+          <div class="flex flex-col gap-4">
+            <p
+              class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold"
             >
-              <span class="material-icons-outlined">chat</span>
-            </div>
-            0811-2700-5688
-          </a>
+              Reach Out To Us
+            </p>
+            <a
+              href="https://wa.me/6281128507788"
+              target="_blank"
+              class="flex items-center gap-4 text-secondary font-bold text-xl group hover:text-primary transition-colors"
+            >
+              <div
+                class="w-12 h-12 bg-primary flex items-center justify-center rounded-xl text-white group-hover:scale-110 transition-transform"
+              >
+                <span class="material-icons-outlined">chat</span>
+              </div>
+              0811-2850-7788
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    /* ─── Elements ─── */
-    const menuToggle   = document.getElementById("menu-toggle");
-    const closeMenu    = document.getElementById("close-menu");
-    const mobileMenu   = document.getElementById("mobile-menu");
-    const mobileLinks  = document.querySelectorAll(".mobile-link");
-    const mobileFooter = document.getElementById("mobile-footer");
-    const mainNav      = document.getElementById("main-nav");
-    const navLinks     = document.querySelectorAll<HTMLAnchorElement>(".nav-link");
-    const hamburgerLines = document.querySelectorAll(".hamburger-line");
-    const navLogoText  = document.getElementById("nav-logo-text") as HTMLElement | null;
+    <script>
+      /* ─── Elements ─── */
+      const menuToggle = document.getElementById("menu-toggle");
+      const closeMenu = document.getElementById("close-menu");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+      const mobileFooter = document.getElementById("mobile-footer");
+      const mainNav = document.getElementById("main-nav");
+      const navLinks =
+        document.querySelectorAll<HTMLAnchorElement>(".nav-link");
+      const hamburgerLines = document.querySelectorAll(".hamburger-line");
+      const navLogoText = document.getElementById(
+        "nav-logo-text",
+      ) as HTMLElement | null;
 
-    /* ─── Scroll: transparent / solid ─── */
-    const setTransparent = () => {
-      mainNav?.classList.remove("nav-solid", "bg-white", "shadow-md", "backdrop-blur-lg", "border-b");
-      navLinks.forEach(el => {
-        el.classList.remove("text-[#132045]", "text-slate-600");
-        el.classList.add("text-white");
-      });
-      hamburgerLines.forEach(el => {
-        el.classList.remove("bg-[#132045]", "bg-slate-700");
-        el.classList.add("bg-white");
-      });
-      // Logo text: large state on transparent
-      if (navLogoText) {
-        navLogoText.classList.add("nav-logo-large", "text-white");
-        navLogoText.classList.remove("text-[#132045]");
-      }
-    };
+      /* ─── Scroll: transparent / solid ─── */
+      const setTransparent = () => {
+        mainNav?.classList.remove(
+          "nav-solid",
+          "bg-white",
+          "shadow-md",
+          "backdrop-blur-lg",
+          "border-b",
+        );
+        navLinks.forEach((el) => {
+          el.classList.remove("text-[#132045]", "text-slate-600");
+          el.classList.add("text-white");
+        });
+        hamburgerLines.forEach((el) => {
+          el.classList.remove("bg-[#132045]", "bg-slate-700");
+          el.classList.add("bg-white");
+        });
+        // Logo text: large state on transparent
+        if (navLogoText) {
+          navLogoText.classList.add("nav-logo-large", "text-white");
+          navLogoText.classList.remove("text-[#132045]");
+        }
+      };
 
-    const setSolid = () => {
-      mainNav?.classList.add("nav-solid", "shadow-md", "backdrop-blur-lg", "border-b");
-      mainNav?.classList.remove("bg-white");
-      navLinks.forEach(el => {
-        el.classList.remove("text-[#132045]", "text-slate-600");
-        el.classList.add("text-white");
-      });
-      hamburgerLines.forEach(el => {
-        el.classList.remove("bg-[#132045]", "bg-slate-700");
-        el.classList.add("bg-white");
-      });
-      // Logo text: normal size on solid
-      if (navLogoText) {
-        navLogoText.classList.remove("nav-logo-large", "text-[#132045]");
-        navLogoText.classList.add("text-white");
-      }
-    };
+      const setSolid = () => {
+        mainNav?.classList.add(
+          "nav-solid",
+          "shadow-md",
+          "backdrop-blur-lg",
+          "border-b",
+        );
+        mainNav?.classList.remove("bg-white");
+        navLinks.forEach((el) => {
+          el.classList.remove("text-[#132045]", "text-slate-600");
+          el.classList.add("text-white");
+        });
+        hamburgerLines.forEach((el) => {
+          el.classList.remove("bg-[#132045]", "bg-slate-700");
+          el.classList.add("bg-white");
+        });
+        // Logo text: normal size on solid
+        if (navLogoText) {
+          navLogoText.classList.remove("nav-logo-large", "text-[#132045]");
+          navLogoText.classList.add("text-white");
+        }
+      };
 
-    /* ─── Initial State Check ─── */
-    const hasHero = document.getElementById("home") || document.querySelector(".service-hero");
-    
-    const updateNavbar = () => {
-      if (window.scrollY > 80 || !hasHero) {
-        setSolid();
-      } else {
-        setTransparent();
-      }
-    };
+      /* ─── Initial State Check ─── */
+      const hasHero =
+        document.getElementById("home") ||
+        document.querySelector(".service-hero");
 
-    // Initialize
-    updateNavbar();
-    
-    // Listen for scroll
-    window.addEventListener("scroll", updateNavbar);
-
-    /* ─── Active section highlight ─── */
-    const sectionIds = ["home", "about", "our-service", "process", "project-showcase"];
-
-    const setActiveLink = (sectionId: string) => {
-      // Desktop links
-      navLinks.forEach(link => {
-        const underline = link.querySelector(".nav-underline") as HTMLElement | null;
-        const isActive = link.dataset.section === sectionId;
-        if (isActive) {
-          link.classList.add("!text-[#e4222e]");
-          link.classList.remove("text-white", "text-slate-600", "text-white/80");
-          if (underline) underline.style.width = "100%";
+      const updateNavbar = () => {
+        if (window.scrollY > 80 || !hasHero) {
+          setSolid();
         } else {
-          link.classList.remove("!text-[#e4222e]");
-          if (underline) underline.style.width = "";
+          setTransparent();
         }
-      });
+      };
 
-      // Mobile links
-      document.querySelectorAll<HTMLAnchorElement>(".mobile-link").forEach(link => {
-        const textEl = link.querySelector(".mobile-link-text") as HTMLElement | null;
-        const isActive = link.dataset.section === sectionId;
-        if (textEl) {
-          textEl.classList.toggle("text-primary", isActive);
-          textEl.classList.toggle("text-secondary", !isActive);
-        }
-      });
-    };
+      // Initialize
+      updateNavbar();
 
-    // IntersectionObserver: fire when section is ≥40% visible
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveLink(entry.target.id);
+      // Listen for scroll
+      window.addEventListener("scroll", updateNavbar);
+
+      /* ─── Active section highlight ─── */
+      const sectionIds = [
+        "home",
+        "about",
+        "our-service",
+        "process",
+        "project-showcase",
+      ];
+
+      const setActiveLink = (sectionId: string) => {
+        // Desktop links
+        navLinks.forEach((link) => {
+          const underline = link.querySelector(
+            ".nav-underline",
+          ) as HTMLElement | null;
+          const isActive = link.dataset.section === sectionId;
+          if (isActive) {
+            link.classList.add("!text-[#e4222e]");
+            link.classList.remove(
+              "text-white",
+              "text-slate-600",
+              "text-white/80",
+            );
+            if (underline) underline.style.width = "100%";
+          } else {
+            link.classList.remove("!text-[#e4222e]");
+            if (underline) underline.style.width = "";
           }
         });
-      },
-      { threshold: 0.25, rootMargin: "-64px 0px 0px 0px" }
-    );
 
-    sectionIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+        // Mobile links
+        document
+          .querySelectorAll<HTMLAnchorElement>(".mobile-link")
+          .forEach((link) => {
+            const textEl = link.querySelector(
+              ".mobile-link-text",
+            ) as HTMLElement | null;
+            const isActive = link.dataset.section === sectionId;
+            if (textEl) {
+              textEl.classList.toggle("text-primary", isActive);
+              textEl.classList.toggle("text-secondary", !isActive);
+            }
+          });
+      };
 
-    /* ─── Mobile menu toggle ─── */
-    const toggleMenu = (open: boolean) => {
-      if (open) {
-        mobileMenu?.classList.remove("translate-x-full", "invisible", "pointer-events-none");
-        document.body.style.overflow = "hidden";
-        setTimeout(() => {
-          mobileLinks.forEach(link => link.classList.remove("translate-y-8", "opacity-0"));
-          mobileFooter?.classList.remove("translate-y-8", "opacity-0");
-        }, 100);
-      } else {
-        mobileMenu?.classList.add("translate-x-full");
-        document.body.style.overflow = "";
-        setTimeout(() => {
-          if (!mobileMenu?.classList.contains("translate-x-full")) return;
-          mobileMenu?.classList.add("invisible", "pointer-events-none");
-          mobileLinks.forEach(link => link.classList.add("translate-y-8", "opacity-0"));
-          mobileFooter?.classList.add("translate-y-8", "opacity-0");
-        }, 700);
-      }
-    };
+      // IntersectionObserver: fire when section is ≥40% visible
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveLink(entry.target.id);
+            }
+          });
+        },
+        { threshold: 0.25, rootMargin: "-64px 0px 0px 0px" },
+      );
 
-    menuToggle?.addEventListener("click", () => toggleMenu(true));
-    closeMenu?.addEventListener("click",  () => toggleMenu(false));
-    mobileLinks.forEach(link => link.addEventListener("click", () => toggleMenu(false)));
-  </script>
-</nav>
+      sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
 
-<style>
-  .nav-solid {
-    background-color: rgba(19, 32, 69, 0.96);
-    border-bottom: 1px solid rgba(228, 34, 46, 0.25);
-  }
+      /* ─── Mobile menu toggle ─── */
+      const toggleMenu = (open: boolean) => {
+        if (open) {
+          mobileMenu?.classList.remove(
+            "translate-x-full",
+            "invisible",
+            "pointer-events-none",
+          );
+          document.body.style.overflow = "hidden";
+          setTimeout(() => {
+            mobileLinks.forEach((link) =>
+              link.classList.remove("translate-y-8", "opacity-0"),
+            );
+            mobileFooter?.classList.remove("translate-y-8", "opacity-0");
+          }, 100);
+        } else {
+          mobileMenu?.classList.add("translate-x-full");
+          document.body.style.overflow = "";
+          setTimeout(() => {
+            if (!mobileMenu?.classList.contains("translate-x-full")) return;
+            mobileMenu?.classList.add("invisible", "pointer-events-none");
+            mobileLinks.forEach((link) =>
+              link.classList.add("translate-y-8", "opacity-0"),
+            );
+            mobileFooter?.classList.add("translate-y-8", "opacity-0");
+          }, 700);
+        }
+      };
 
-  /* ─── Logo Colors ─── */
-  #nav-logo-text .logo-part-1,
-  #nav-logo-text .logo-part-2,
-  #nav-logo-text .logo-part-3 {
-    color: inherit;
-    font-weight: 600;
-  }
-  
-  .text-white .logo-part-1,
-  .text-white .logo-part-2,
-  .text-white .logo-part-3 {
-    color: white;
-  }
-  
-  .text-navy .logo-part-1,
-  .text-navy .logo-part-2,
-  .text-navy .logo-part-3 {
-    color: #132045;
-  }
+      menuToggle?.addEventListener("click", () => toggleMenu(true));
+      closeMenu?.addEventListener("click", () => toggleMenu(false));
+      mobileLinks.forEach((link) =>
+        link.addEventListener("click", () => toggleMenu(false)),
+      );
+    </script>
+  </div>
 
-  /* ─── Logo Size Transition ─── */
-  .nav-logo-large {
-    transform: scale(1.35);
-    transform-origin: left center;
-  }
-
-  @media (max-width: 640px) {
-    .nav-logo-large {
-      transform: scale(1.15);
+  <style>
+    .nav-solid {
+      background-color: rgba(19, 32, 69, 0.96);
+      border-bottom: 1px solid rgba(228, 34, 46, 0.25);
     }
-  }
-</style>
+
+    /* ─── Logo Colors ─── */
+    #nav-logo-text .logo-part-1,
+    #nav-logo-text .logo-part-2,
+    #nav-logo-text .logo-part-3 {
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .text-white .logo-part-1,
+    .text-white .logo-part-2,
+    .text-white .logo-part-3 {
+      color: white;
+    }
+
+    .text-navy .logo-part-1,
+    .text-navy .logo-part-2,
+    .text-navy .logo-part-3 {
+      color: #132045;
+    }
+
+    /* ─── Logo Size Transition ─── */
+    .nav-logo-large {
+      transform: scale(1.35);
+      transform-origin: left center;
+    }
+
+    @media (max-width: 640px) {
+      .nav-logo-large {
+        transform: scale(1.15);
+      }
+    }
+  </style>
+</nav>
