@@ -7,7 +7,7 @@ const t = useTranslations(lang as any);
 
 <section
   id="vision-mission"
-  class="relative py-24 md:py-32 overflow-hidden bg-background-light"
+  class="relative py-20 lg:py-32 overflow-hidden bg-background-light"
 >
   <!-- Decorative Background Elements -->
   <div
@@ -19,102 +19,147 @@ const t = useTranslations(lang as any);
   >
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
+  <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
     <!-- Section Header -->
-    <div class="text-center mb-10 md:mb-20" data-aos-vm="fade-up">
-      <h2
-        class="font-display text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mb-3 md:mb-4"
+    <div class="text-left mb-6 md:mb-8 lg:mb-12" data-aos-vm="fade-right">
+      <span
+        class="font-display text-primary text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mb-2 md:mb-3 block"
       >
         {t("vm.title")}
-      </h2>
-      <p
-        class="font-serif text-2xl md:text-5xl text-navy leading-tight"
+      </span>
+      <h2
+        class="font-serif text-2xl md:text-4xl lg:text-5xl text-navy leading-tight"
         set:html={t("vm.main_title")}
       />
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-      <!-- Image Side (Staggered) -->
-      <div class="relative order-2 lg:order-1" data-aos-vm="fade-right">
-        <div
-          class="relative h-52 sm:h-72 md:h-96 lg:aspect-[4/5] lg:h-auto overflow-hidden rounded-2xl shadow-2xl"
-        >
-          <img
-            src="/images/project/BIZNET/ChatGPT Image Feb 18, 2026, 10_54_33 AM.png"
-            alt="Interior Excellence"
-            class="w-full h-full object-cover transition-transform duration-1000 hover:scale-110"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-60"
-          >
-          </div>
-        </div>
-
-        <!-- Floating Accent -->
-        <div
-          class="absolute -bottom-4 -right-4 md:-bottom-10 md:-right-10 w-20 h-20 md:w-48 md:h-48 bg-primary/10 border border-primary/20 backdrop-blur-xl rounded-2xl -z-10 animate-pulse"
-        >
-        </div>
-      </div>
-
-      <!-- Content Side -->
-      <div class="space-y-8 order-1 lg:order-2">
+    <!-- Content & Video Grid -->
+    <div class="grid grid-cols-[1.1fr_0.9fr] sm:grid-cols-[1fr_1fr] lg:grid-cols-2 gap-3 sm:gap-6 lg:gap-12 items-start lg:items-stretch">
+      <!-- Left Column: Cards Container -->
+      <div class="space-y-3 lg:space-y-6 flex flex-col justify-between flex-1 w-full" data-aos-vm="fade-right">
         <!-- Mission Card -->
         <div
-          class="glass-card p-5 md:p-10 rounded-2xl shadow-xl border border-white/50 hover-lift group"
-          data-aos-vm="fade-left"
+          class="glass-card p-3 sm:p-4 lg:p-8 rounded-2xl shadow-xl border border-white/50 hover-lift group flex-1 flex flex-col justify-center relative overflow-hidden"
           data-aos-delay="100"
         >
-          <div class="flex items-start gap-4 md:gap-6">
+          <div class="flex items-start gap-2.5 lg:gap-6">
             <div
-              class="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 flex-shrink-0"
+              class="w-7 h-7 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 flex-shrink-0"
             >
-              <span class="material-icons-outlined text-xl md:text-3xl">auto_awesome</span>
+              <span class="material-icons-outlined text-sm sm:text-lg lg:text-2xl">auto_awesome</span>
             </div>
-            <div class="flex-1">
+            <div class="flex-1 min-w-0">
               <span
-                class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60 mb-1 md:mb-2 block"
+                class="text-[7px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60 mb-0.5 lg:mb-1 block"
               >
                 {t("vm.mission_subtitle")}
               </span>
-              <h3 class="font-serif text-xl md:text-3xl text-navy mb-2 md:mb-4">
+              <h3 class="font-serif text-xs sm:text-base md:text-xl lg:text-2xl text-navy mb-0.5 lg:mb-2">
                 {t("vm.mission")}
               </h3>
-              <p
-                class="text-navy/70 text-xs md:text-base leading-relaxed font-light"
+              <div
+                class="vm-text text-navy/70 text-[9px] sm:text-xs lg:text-base leading-relaxed font-light line-clamp-2 lg:line-clamp-none transition-all duration-300"
+                set:html={t("vm.mission_text")}
+              />
+              <button
+                class="vm-toggle-btn mt-1 text-[8px] sm:text-[10px] font-bold text-primary flex items-center gap-0.5 lg:hidden cursor-pointer"
+                data-text-more={t("vm.see_detail")}
+                data-text-less={t("vm.show_less")}
               >
-                {t("vm.mission_text")}
-              </p>
+                <span class="btn-text">{t("vm.see_detail")}</span>
+                <span class="material-icons-outlined text-[10px] sm:text-xs transition-transform duration-300 pointer-events-none">expand_more</span>
+              </button>
             </div>
           </div>
         </div>
 
         <!-- Vision Card -->
         <div
-          class="glass-card p-5 md:p-10 rounded-2xl shadow-xl border border-white/50 hover-lift group lg:translate-x-12"
-          data-aos-vm="fade-left"
+          class="glass-card p-3 sm:p-4 lg:p-8 rounded-2xl shadow-xl border border-white/50 hover-lift group lg:translate-x-8 flex-1 flex flex-col justify-center relative overflow-hidden"
           data-aos-delay="300"
         >
-          <div class="flex items-start gap-4 md:gap-6">
+          <div class="flex items-start gap-2.5 lg:gap-6">
             <div
-              class="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-white transition-all duration-500 flex-shrink-0"
+              class="w-7 h-7 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg lg:rounded-xl bg-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-white transition-all duration-500 flex-shrink-0"
             >
-              <span class="material-icons-outlined text-xl md:text-3xl">visibility</span>
+              <span class="material-icons-outlined text-sm sm:text-lg lg:text-2xl">visibility</span>
             </div>
-            <div class="flex-1">
+            <div class="flex-1 min-w-0">
               <span
-                class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-navy/40 mb-1 md:mb-2 block"
+                class="text-[7px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-navy/40 mb-0.5 lg:mb-1 block"
               >
                 {t("vm.vision_subtitle")}
               </span>
-              <h3 class="font-serif text-xl md:text-3xl text-navy mb-2 md:mb-4">
+              <h3 class="font-serif text-xs sm:text-base md:text-xl lg:text-2xl text-navy mb-0.5 lg:mb-2">
                 {t("vm.vision")}
               </h3>
-              <p
-                class="text-navy/70 text-xs md:text-base leading-relaxed font-light"
+              <div
+                class="vm-text text-navy/70 text-[9px] sm:text-xs lg:text-base leading-relaxed font-light line-clamp-2 lg:line-clamp-none transition-all duration-300"
+                set:html={t("vm.vision_text")}
+              />
+              <button
+                class="vm-toggle-btn mt-1 text-[8px] sm:text-[10px] font-bold text-navy flex items-center gap-0.5 lg:hidden cursor-pointer"
+                data-text-more={t("vm.see_detail")}
+                data-text-less={t("vm.show_less")}
               >
-                {t("vm.vision_text")}
-              </p>
+                <span class="btn-text">{t("vm.see_detail")}</span>
+                <span class="material-icons-outlined text-[10px] sm:text-xs transition-transform duration-300 pointer-events-none">expand_more</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Video Side (Full Portrait) -->
+      <div class="flex flex-col items-center justify-center w-full" data-aos-vm="fade-left">
+        <div class="relative w-full lg:max-w-[400px]">
+          <!-- Floating Accent -->
+          <div
+            class="absolute -bottom-2 -left-2 lg:-bottom-6 lg:-left-6 w-10 h-10 lg:w-32 lg:h-32 bg-primary/10 border border-primary/20 backdrop-blur-xl rounded-xl lg:rounded-2xl -z-10 animate-pulse"
+          >
+          </div>
+
+          <!-- Video Container -->
+          <div
+            class="relative w-full aspect-[9/16] overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl group/video"
+          >
+            <video
+              id="vm-video"
+              autoplay
+              loop
+              muted
+              playsinline
+              class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+            >
+              <source src="/images/video/3.mp4" type="video/mp4" />
+              <source src="/images/video/3.MOV" type="video/quicktime" />
+              <source src="/images/video/3.MOV" />
+              Your browser does not support the video tag.
+            </video>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent opacity-60 pointer-events-none"
+            >
+            </div>
+
+            <!-- Custom Glass Video Controls -->
+            <div class="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 z-20 flex justify-between items-center">
+              <!-- Play/Pause Button -->
+              <button
+                id="vm-play-btn"
+                class="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-navy/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg cursor-pointer"
+                aria-label="Play or Pause video"
+              >
+                <span class="material-icons-outlined text-xs sm:text-lg">pause</span>
+              </button>
+
+              <!-- Mute/Unmute Button -->
+              <button
+                id="vm-mute-btn"
+                class="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-navy/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg cursor-pointer"
+                aria-label="Mute or Unmute video"
+              >
+                <span class="material-icons-outlined text-xs sm:text-lg">volume_off</span>
+              </button>
             </div>
           </div>
         </div>
@@ -143,6 +188,82 @@ const t = useTranslations(lang as any);
     elements.forEach((el) => observer.observe(el));
   }
 
+  function initVideoControls() {
+    const video = document.getElementById("vm-video") as HTMLVideoElement | null;
+    const playBtn = document.getElementById("vm-play-btn");
+    const muteBtn = document.getElementById("vm-mute-btn");
+
+    if (!video || !playBtn || !muteBtn) return;
+
+    const playIcon = playBtn.querySelector(".material-icons-outlined");
+    const muteIcon = muteBtn.querySelector(".material-icons-outlined");
+
+    // Click handler for Play/Pause
+    playBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch((err) => console.log("Play interrupted: ", err));
+        if (playIcon) playIcon.textContent = "pause";
+      } else {
+        video.pause();
+        if (playIcon) playIcon.textContent = "play_arrow";
+      }
+    });
+
+    // Click handler for Mute/Unmute
+    muteBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      if (muteIcon) {
+        muteIcon.textContent = video.muted ? "volume_off" : "volume_up";
+      }
+    });
+
+    // Sync icons in case browser autoplay or user agent changes state automatically
+    video.addEventListener("play", () => {
+      if (playIcon) playIcon.textContent = "pause";
+    });
+    video.addEventListener("pause", () => {
+      if (playIcon) playIcon.textContent = "play_arrow";
+    });
+  }
+
+  function initDetailToggles() {
+    const toggleBtns = document.querySelectorAll(".vm-toggle-btn");
+    toggleBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const cardBody = btn.closest(".flex-1");
+        if (!cardBody) return;
+        const textEl = cardBody.querySelector(".vm-text");
+        const iconEl = btn.querySelector(".material-icons-outlined");
+        const btnTextEl = btn.querySelector(".btn-text");
+
+        if (!textEl || !btnTextEl) return;
+
+        const isExpanded = textEl.classList.contains("line-clamp-none");
+        const textMore = btn.getAttribute("data-text-more") || "See Details";
+        const textLess = btn.getAttribute("data-text-less") || "Show Less";
+
+        if (isExpanded) {
+          textEl.classList.remove("line-clamp-none");
+          textEl.classList.add("line-clamp-2");
+          btnTextEl.textContent = textMore;
+          if (iconEl) iconEl.classList.remove("rotate-180");
+        } else {
+          textEl.classList.remove("line-clamp-2");
+          textEl.classList.add("line-clamp-none");
+          btnTextEl.textContent = textLess;
+          if (iconEl) iconEl.classList.add("rotate-180");
+        }
+      });
+    });
+  }
+
+  function initVM() {
+    initVMAnimations();
+    initVideoControls();
+    initDetailToggles();
+  }
+
   // Inject animation styles
   if (!document.getElementById("vm-animations")) {
     const style = document.createElement("style");
@@ -167,6 +288,6 @@ const t = useTranslations(lang as any);
     document.head.appendChild(style);
   }
 
-  document.addEventListener("DOMContentLoaded", initVMAnimations);
-  document.addEventListener("astro:page-load", initVMAnimations);
+  document.addEventListener("DOMContentLoaded", initVM);
+  document.addEventListener("astro:page-load", initVM);
 </script>
