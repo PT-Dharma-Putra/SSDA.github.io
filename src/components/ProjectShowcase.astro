@@ -8,9 +8,12 @@ const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
 const langPrefix = lang === 'en' ? '' : `/${lang}`;
 
-// Resolve first image from each project folder
+// Resolve cover image from each project folder
 const projects = projectsData.map((project) => {
   let thumb = project.image;
+  if (project.image && fs.existsSync(path.join(process.cwd(), "public", project.image.replace(/^\//, '')))) {
+    return { ...project, thumb: project.image };
+  }
   if (project.folderName) {
     try {
       const dir = path.join(process.cwd(), "public", "images", "project", project.folderName);
@@ -69,6 +72,11 @@ const projects = projectsData.map((project) => {
                 onerror="this.src='/images/hero-bg.png'"
               />
               <div class="ps-card-overlay"></div>
+              {project.badge && (
+                <div class="ps-card-badge">
+                  <span>{project.badge}</span>
+                </div>
+              )}
             </div>
             
             <div class="ps-card-content">
@@ -82,7 +90,12 @@ const projects = projectsData.map((project) => {
                 <span>{project.category[lang as keyof typeof project.category] || project.category.en}</span>
               </div>
               
-              <h3 class="ps-card-name">{project.title}</h3>
+              <h3 class="ps-card-name">
+                {project.title}
+                {project.badge && (
+                  <span class="ps-card-badge-pill">{project.badge}</span>
+                )}
+              </h3>
               
               <div class="ps-card-footer">
                 <span class="ps-btn-text">{t('projects.viewDetail')}</span>
@@ -242,7 +255,8 @@ const projects = projectsData.map((project) => {
   .ps-card-img-wrap {
     position: relative;
     width: 100%;
-    height: 220px; /* Reduced image height slightly */
+    height: 240px;
+    background-color: #f1f5f9;
     overflow: hidden;
   }
 
@@ -250,24 +264,59 @@ const projects = projectsData.map((project) => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
   }
 
   .ps-card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(19,32,69,0.1) 0%, transparent 50%);
+    background: linear-gradient(to top, rgba(19, 32, 69, 0.12) 0%, transparent 50%);
     opacity: 0;
     transition: opacity 0.4s ease;
   }
 
   .ps-card:hover .ps-card-img {
-    transform: scale(1.08);
+    transform: scale(1.05);
   }
 
   .ps-card:hover .ps-card-overlay {
     opacity: 1;
+  }
+
+  .ps-card-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    padding: 4px 12px;
+    background: rgba(19, 32, 69, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  }
+
+  .ps-card-badge-pill {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: #f1f5f9;
+    color: #132045;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
   }
 
   /* ─── Card Content ─── */
