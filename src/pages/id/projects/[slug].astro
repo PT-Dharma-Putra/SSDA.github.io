@@ -31,7 +31,11 @@ export async function getStaticPaths() {
             .map((file) => `/images/project/${project.folderName}/${file}`);
 
           gallery = galleryFiles;
-          allImages = [...galleryFiles];
+          if (project.image && galleryFiles.includes(project.image)) {
+            allImages = [project.image, ...galleryFiles.filter((f) => f !== project.image)];
+          } else {
+            allImages = [...galleryFiles];
+          }
         }
       } catch (e) {
         console.error(`Error loading gallery for ${project.title}:`, e);

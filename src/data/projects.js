@@ -24,6 +24,7 @@ export const projectsData = [
   },
   {
     title: "Hamori Subang",
+    badge: "Non BPJS",
     category: {
       en: "Healthcare",
       id: "Kesehatan"
@@ -57,6 +58,77 @@ export const projectsData = [
     },
   },
   {
+    title: "Hamori Subang",
+    badge: "BPJS",
+    category: {
+      en: "Healthcare",
+      id: "Kesehatan"
+    },
+    description: {
+      en: `The BPJS facility interior at Hamori Hospital embraces a warm, modern Healthcare Hospitality concept:
+    • Inpatient Admission & Nurse Station: A grand service counter with dark marble counters, warm wood fluting, illuminated hospital branding, and integrated linear LED lighting.
+    • Reception & Info Desk: A welcoming curved reception counter with elegant turquoise and warm yellow accents and illuminated arch backdrop.
+    • Pediatric Care & Play Area: Cheerful thematic children's zones including a healthy baby room with tropical murals and a space-themed waiting and play area.
+    • Architectural Portals: Refined curved wooden archways enhancing patient circulation and zoning transitions.
+
+    This modern design ensures optimal clinical functionality, seamless patient flow, and a welcoming healing environment for all patients and medical staff.`,
+      id: `Interior fasilitas BPJS Rumah Sakit Hamori mengusung konsep Modern Healthcare Hospitality yang hangat dan profesional:
+    • Admisi Rawat Inap & Nurse Station: Konter pelayanan terpadu berdesain megah dengan meja marmer gelap, kisi-kisi kayu hangat, signage Rumah Sakit Hamori menyala, dan tata cahaya LED linier.
+    • Resepsionis & Pusat Informasi: Meja lengkung modern dengan kombinasi warna toska dan kuning ceria berpadu aksen backdrop lengkung bercahaya.
+    • Area Pediatrik & Ruang Tunggu Anak: Zona ramah anak mencakup ruang bayi sehat bertema pantai tropis serta ruang tunggu anak bermural tematik luar angkasa yang ceria.
+    • Portal Arsitektural: Aksen lengkung kayu elegan yang mempercantik sirkulasi antarzona pelayanan medis.
+
+    Desain ini menghadirkan standar kenyamanan prima, alur sirkulasi teratur, dan suasana penyembuhan yang ramah serta higienis bagi pasien dan tenaga medis.`
+    },
+    image:
+      "/images/project/HAMORI SUBANG BPJS/08_hamori_bpjs_admisi_ranap_front.jpg",
+    slug: "hamori-subang-bpjs",
+    folderName: "HAMORI SUBANG BPJS",
+    details: {
+      client: "Hamori Hospital",
+      location: "Subang",
+      year: "2024",
+      service: {
+        en: "Interior Design & Furniture",
+        id: "Desain Interior & Furnitur"
+      },
+    },
+  },
+  {
+    title: "Hasna Medika Majalengka",
+    category: {
+      en: "Healthcare",
+      id: "Kesehatan"
+    },
+    description: {
+      en: `The interior features a Modern Healthcare Hospitality concept:
+    • Reception & Registration: An elegant curved registration counter featuring warm vertical wood fluting, marble accent panels, and warm ambient LED backlighting.
+    • Nurse Station: An ergonomic curved service desk integrated with fluted wood paneling and clear illuminated blue overhead signage for intuitive patient guidance.
+    • Facade & Entrance: A bright, welcoming entrance portal with wooden slatted ceiling elements, architectural lighting, and cohesive clinic branding.
+
+    This blend of clinical functionality and warm natural materials creates a tranquil, professional healing environment for patients and medical staff.`,
+      id: `Interior ini mengusung konsep Modern Healthcare Hospitality:
+    • Area Pendaftaran & Lobi: Meja pendaftaran berdesain lengkung elegan dengan kisi-kisi kayu vertikal yang hangat, panel marmer, serta pencahayaan LED tersembunyi.
+    • Nurse Station: Konter perawat ergonomis berpadu panel kayu modern dan kanopi signage biru bercahaya yang ikonik dan mudah diidentifikasi.
+    • Fasad & Pintu Masuk: Area pintu masuk yang terang dan profesional dengan plafon kisi-kisi kayu, tata cahaya arsitektural, dan identitas visual yang terintegrasi rapi.
+
+    Perpaduan standar fungsional fasilitas medis dan material bernuansa alami menciptakan lingkungan perawatan yang tenang, nyaman, dan ramah bagi pasien maupun tenaga medis.`
+    },
+    image:
+      "/images/project/HASNA MEDIKA MAJALENGKA/01_pendaftaran_hasna_medika.jpg",
+    slug: "hasna-medika-majalengka",
+    folderName: "HASNA MEDIKA MAJALENGKA",
+    details: {
+      client: "Klinik Hasna Medika",
+      location: "Majalengka, Jawa Barat",
+      year: "2024",
+      service: {
+        en: "Interior Design & Furniture",
+        id: "Desain Interior & Furnitur"
+      },
+    },
+  },
+  {
     title: "Consulate Bistro Cafe",
     category: {
       en: "F&B",
@@ -66,7 +138,7 @@ export const projectsData = [
       en: `An elegant and inviting bistro concept offering a cozy dining experience. The design highlights a blend of modern aesthetics with classic touches, using warm lighting and comfortable seating to create the perfect atmosphere for casual dining and gatherings.`,
       id: `Konsep bistro yang elegan dan menarik yang menawarkan pengalaman bersantap yang nyaman. Desainnya menonjolkan perpaduan estetika modern dengan sentuhan klasik, menggunakan pencahayaan hangat dan tempat duduk yang nyaman untuk menciptakan suasana sempurna untuk bersantap santai dan berkumpul.`
     },
-    image: "/images/hero-bg.png",
+    image: "/images/project/CONSULATE BISTRO JCM/consulate_bistro_bar.png",
     slug: "consulate-bistro-cafe",
     folderName: "CONSULATE BISTRO JCM",
     details: {
@@ -122,7 +194,7 @@ export const projectsData = [
       en: `A premium residential property designed for comfort and privacy. The design utilizes smart space planning, modern minimalist furniture, and excellent lighting to maximize the living experience in a compact setting.`,
       id: `Properti hunian premium yang dirancang untuk kenyamanan dan privasi. Desainnya menggunakan perencanaan ruang yang cerdas, furnitur minimalis modern, dan pencahayaan yang sangat baik untuk memaksimalkan pengalaman tinggal di lingkungan yang ringkas.`
     },
-    image: "/images/hero-bg.png",
+    image: "/images/project/KOST EKLUSIVE GRIYA SAMBILEGI/griya_sambilegi_main.webp",
     slug: "griya-sambilegi",
     folderName: "KOST EKLUSIVE GRIYA SAMBILEGI",
     details: {

@@ -12,6 +12,9 @@ const t = useTranslations(lang as any);
 const langPrefix = lang === 'en' ? '' : `/${lang}`;
 
 const projects = projectsData.map((project) => {
+  if (project.image && fs.existsSync(path.join(process.cwd(), "public", project.image.replace(/^\//, '')))) {
+    return project;
+  }
   if (project.folderName) {
     try {
       const folderPath = path.join(
@@ -66,29 +69,55 @@ const projects = projectsData.map((project) => {
           projects.map((project) => (
             <a
               href={`${langPrefix}/projects/${project.slug}`}
-              class="group cursor-pointer block"
+              class="group cursor-pointer flex flex-col bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
             >
-              <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden mb-4 relative aspect-[4/3]">
+              <div class="rounded-xl overflow-hidden mb-4 relative aspect-[4/3] bg-slate-100">
                 <img
                   alt={project.title}
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   src={project.image}
                   onerror="this.src='https://placehold.co/800x600?text=Project+Image'"
                 />
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-                <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white translate-y-4 group-hover:translate-y-0 transition-transform">
-                  <p class="text-xs font-bold uppercase tracking-wider mb-1 text-primary">
+                
+                <!-- Category badge -->
+                <div class="absolute top-3 left-3 z-20">
+                  <span class="inline-block px-3 py-1 bg-white/90 backdrop-blur-md text-[#132045] font-bold text-[11px] tracking-wider uppercase rounded-full shadow-sm">
                     {project.category[lang as keyof typeof project.category] || project.category.en}
-                  </p>
-                  <h3 class="font-display text-xl font-bold">
-                    {project.title}
-                  </h3>
+                  </span>
                 </div>
+
+                <!-- Specific badge (e.g. BPJS / Non BPJS) -->
+                {project.badge && (
+                  <div class="absolute top-3 right-3 z-20">
+                    <span class="inline-block px-3 py-1 bg-[#132045]/90 backdrop-blur-md border border-white/20 text-white font-bold text-[11px] tracking-wider uppercase rounded-full shadow-sm">
+                      {project.badge}
+                    </span>
+                  </div>
+                )}
               </div>
-              <div class="px-2">
-                <p class="text-sm text-slate-500 line-clamp-3">
-                  {project.description[lang as keyof typeof project.description] || project.description.en}
-                </p>
+
+              <!-- Text Content cleanly below image -->
+              <div class="px-1 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 class="font-display text-xl font-bold text-[#132045] group-hover:text-primary transition-colors mb-2 flex items-center justify-between gap-2">
+                    <span>{project.title}</span>
+                    {project.badge && (
+                      <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-[#132045] border border-slate-200 uppercase tracking-wider shrink-0">
+                        {project.badge}
+                      </span>
+                    )}
+                  </h3>
+                  <p class="text-sm text-slate-500 line-clamp-3 leading-relaxed">
+                    {project.description[lang as keyof typeof project.description] || project.description.en}
+                  </p>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-primary tracking-wider uppercase">
+                  <span>{t('projects.viewDetail')}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
               </div>
             </a>
           ))
